@@ -391,7 +391,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-1-velocidades-del-viento">
 <h1>Ejercicio 1 - Velocidades del viento<a class="headerlink" href="#ejercicio-1-velocidades-del-viento" title="Link to this heading">#</a></h1>
-<p>En esta seccion, desarrollaremos el EDA y ETL de la base de datos de “Velocidades de viento” con el fin de comprender y analizar la problematica planteada.</p>
+<p>En esta seccion, desarrollaremos el EDA y ETL de la base de datos de <strong>“Velocidades de viento”</strong> con el fin de comprender y analizar la problematica planteada.</p>
 <p>A continuacion, instalaremos las librerias quer seran utilizadas a lo largo del ejercicio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -424,220 +424,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/user/Desktop/Maestria 2025/Maestria Uninorte/Primer semestre 2025/Machine Learning/Parcial1ML/docs/data_treino_dv_df_2000_2010.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>HORA (UTC)</th>
-      <th>VENTO, DIREï¿½ï¿½O HORARIA (gr) (ï¿½ (gr))</th>
-      <th>VENTO, VELOCIDADE HORARIA (m/s)</th>
-      <th>UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)</th>
-      <th>UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)</th>
-      <th>TEMPERATURA Mï¿½XIMA NA HORA ANT. (AUT) (ï¿½C)</th>
-      <th>TEMPERATURA Mï¿½NIMA NA HORA ANT. (AUT) (ï¿½C)</th>
-      <th>UMIDADE RELATIVA DO AR, HORARIA (%)</th>
-      <th>PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)</th>
-      <th>PRECIPITAï¿½ï¿½O TOTAL, HORï¿½RIO (mm)</th>
-      <th>VENTO, RAJADA MAXIMA (m/s)</th>
-      <th>PRESSï¿½O ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)</th>
-      <th>PRESSï¿½O ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>12:00</td>
-      <td>0.809017</td>
-      <td>1.8</td>
-      <td>69.0</td>
-      <td>60.0</td>
-      <td>22.6</td>
-      <td>20.7</td>
-      <td>61.0</td>
-      <td>888.2</td>
-      <td>0.0</td>
-      <td>3.8</td>
-      <td>888.2</td>
-      <td>887.7</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>13:00</td>
-      <td>0.965926</td>
-      <td>2.7</td>
-      <td>62.0</td>
-      <td>55.0</td>
-      <td>24.2</td>
-      <td>22.5</td>
-      <td>55.0</td>
-      <td>888.4</td>
-      <td>0.0</td>
-      <td>4.7</td>
-      <td>888.4</td>
-      <td>888.2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>14:00</td>
-      <td>0.891007</td>
-      <td>2.0</td>
-      <td>56.0</td>
-      <td>50.0</td>
-      <td>25.5</td>
-      <td>24.3</td>
-      <td>51.0</td>
-      <td>888.1</td>
-      <td>0.0</td>
-      <td>4.9</td>
-      <td>888.4</td>
-      <td>888.1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>15:00</td>
-      <td>0.848048</td>
-      <td>2.5</td>
-      <td>52.0</td>
-      <td>44.0</td>
-      <td>27.4</td>
-      <td>25.0</td>
-      <td>44.0</td>
-      <td>887.4</td>
-      <td>0.0</td>
-      <td>5.8</td>
-      <td>888.1</td>
-      <td>887.4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>16:00</td>
-      <td>0.224951</td>
-      <td>2.4</td>
-      <td>50.0</td>
-      <td>43.0</td>
-      <td>27.1</td>
-      <td>25.5</td>
-      <td>46.0</td>
-      <td>886.5</td>
-      <td>0.0</td>
-      <td>5.8</td>
-      <td>887.4</td>
-      <td>886.5</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>87688</th>
-      <td>19:00</td>
-      <td>-0.615661</td>
-      <td>5.6</td>
-      <td>83.0</td>
-      <td>78.0</td>
-      <td>21.8</td>
-      <td>21.1</td>
-      <td>80.0</td>
-      <td>879.1</td>
-      <td>0.0</td>
-      <td>12.3</td>
-      <td>879.8</td>
-      <td>879.1</td>
-    </tr>
-    <tr>
-      <th>87689</th>
-      <td>20:00</td>
-      <td>-0.469472</td>
-      <td>4.9</td>
-      <td>84.0</td>
-      <td>79.0</td>
-      <td>21.7</td>
-      <td>21.0</td>
-      <td>84.0</td>
-      <td>879.2</td>
-      <td>0.0</td>
-      <td>9.9</td>
-      <td>879.2</td>
-      <td>878.9</td>
-    </tr>
-    <tr>
-      <th>87690</th>
-      <td>21:00</td>
-      <td>-0.484810</td>
-      <td>4.5</td>
-      <td>86.0</td>
-      <td>82.0</td>
-      <td>21.2</td>
-      <td>20.6</td>
-      <td>86.0</td>
-      <td>879.7</td>
-      <td>0.0</td>
-      <td>8.9</td>
-      <td>879.8</td>
-      <td>879.2</td>
-    </tr>
-    <tr>
-      <th>87691</th>
-      <td>22:00</td>
-      <td>-0.484810</td>
-      <td>3.2</td>
-      <td>88.0</td>
-      <td>85.0</td>
-      <td>20.6</td>
-      <td>20.2</td>
-      <td>88.0</td>
-      <td>880.5</td>
-      <td>0.0</td>
-      <td>8.0</td>
-      <td>880.5</td>
-      <td>879.6</td>
-    </tr>
-    <tr>
-      <th>87692</th>
-      <td>23:00</td>
-      <td>-0.573576</td>
-      <td>2.3</td>
-      <td>95.0</td>
-      <td>88.0</td>
-      <td>20.2</td>
-      <td>19.3</td>
-      <td>95.0</td>
-      <td>881.1</td>
-      <td>0.6</td>
-      <td>7.5</td>
-      <td>881.1</td>
-      <td>880.5</td>
-    </tr>
-  </tbody>
-</table>
-<p>87693 rows × 13 columns</p>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <div class="toctree-wrapper compound">
