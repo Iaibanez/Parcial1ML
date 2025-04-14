@@ -377,7 +377,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renombramiento-de-columnas">Renombramiento de columnas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -627,6 +631,123 @@ document.write(`
 <p>87693 rows × 13 columns</p>
 </div></div></div>
 </div>
+<p>Observamos …</p>
+<section id="renombramiento-de-columnas">
+<h3>Renombramiento de columnas<a class="headerlink" href="#renombramiento-de-columnas" title="Link to this heading">#</a></h3>
+<p>A continuación se muestra la correspondencia entre los nombres originales del dataset y los nuevos nombres utilizados para facilitar el análisis:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nombre original</p></th>
+<th class="head"><p>Nuevo nombre</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HORA (UTC)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hora</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>VENTO, DIREÇÃO HORARIA (gr)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viento_dir</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>VENTO, VELOCIDADE HORARIA (m/s)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viento_vel</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">humedad_max_ant</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">humedad_min_ant</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temp_max_ant</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temp_min_ant</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>UMIDADE RELATIVA DO AR, HORARIA (%)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">humedad_horaria</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">presion_horaria</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRECIPITAÇÃO TOTAL, HORÁRIA (mm)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">precipitacion</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>VENTO, RAJADA MAXIMA (m/s)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">viento_rafaga_max</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PRESSÃO ATMOSFERICA <a class="reference external" href="http://MAX.NA">MAX.NA</a> HORA ANT. (AUT) (mB)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">presion_max_ant</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PRESSÃO ATMOSFERICA <a class="reference external" href="http://MIN.NA">MIN.NA</a> HORA ANT. (AUT) (mB)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">presion_min_ant</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Renombramos los nombres de cada columna </span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;hora&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;viento_dir&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;viento_vel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;humedad_max_ant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;humedad_min_ant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;temp_max_ant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;temp_min_ant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;humedad_horaria&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;presion_horaria&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;precipitacion&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;viento_rafaga_max&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;presion_max_ant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;presion_min_ant&#39;</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;hora&#39;, &#39;viento_dir&#39;, &#39;viento_vel&#39;, &#39;humedad_max_ant&#39;,
+       &#39;humedad_min_ant&#39;, &#39;temp_max_ant&#39;, &#39;temp_min_ant&#39;, &#39;humedad_horaria&#39;,
+       &#39;presion_horaria&#39;, &#39;precipitacion&#39;, &#39;viento_rafaga_max&#39;,
+       &#39;presion_max_ant&#39;, &#39;presion_min_ant&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;viento_dir&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    87693.000000
+mean         0.405810
+std          0.686247
+min         -1.000000
+25%         -0.156434
+50%          0.788011
+75%          0.970296
+max          1.000000
+Name: viento_dir, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -687,7 +808,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renombramiento-de-columnas">Renombramiento de columnas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
