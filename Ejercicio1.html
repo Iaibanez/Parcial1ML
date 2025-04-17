@@ -384,6 +384,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta">Analisis de correlacion entre variables explicativas y de respuesta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-simetria-y-datos-atipicos">Analisis de simetria y datos atipicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a></li>
 </ul>
             </nav>
         </div>
@@ -947,14 +948,38 @@ dtype: int64
 <p>En esta seccion, analizaremos la correlacion entre las variables independientes (X) y la variable dependiente (y).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlación entre variables numéricas&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la correlación</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># Crear figura más grande</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Dibujar heatmap</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">corr_matrix</span><span class="p">,</span>
+    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                 <span class="c1"># Mostrar los valores</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>                  <span class="c1"># Formato de los números</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>            <span class="c1"># Mapa de color</span>
+    <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                <span class="c1"># Cuadrícula cuadrada</span>
+    <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">},</span>  <span class="c1"># Barra de color más pequeña</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>             <span class="c1"># Líneas entre celdas</span>
+    <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>      <span class="c1"># Tamaño del texto de los valores</span>
+<span class="p">)</span>
+
+<span class="c1"># Ajustes de etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Título general</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matriz de Correlación entre Variables Numéricas&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a50d271f3de4a97f4f8b11b362a57e46833562b26e54e6e7dc16a43ea8aff861.png" src="_images/a50d271f3de4a97f4f8b11b362a57e46833562b26e54e6e7dc16a43ea8aff861.png" />
+<img alt="_images/df62af1db6ab6948f9a8b3cf9803616678f8c31ffa3031346e8f86533194ba18.png" src="_images/df62af1db6ab6948f9a8b3cf9803616678f8c31ffa3031346e8f86533194ba18.png" />
 </div>
 </div>
 <p>en la figura anterior, observamos…</p>
@@ -987,32 +1012,31 @@ Name: viento_vel, dtype: float64
 <p>Analizaremos la variable de respuesta con respecto a las variables seleccionadas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hora&#39;</span><span class="p">)[</span><span class="s1">&#39;viento_vel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Velocidad promedio del viento por hora&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Velocidad promedio del viento por hora&#39;}, xlabel=&#39;hora&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" src="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" />
-</div>
-</div>
-<p>Observamos que…</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables a graficar</span>
 <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;viento_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;viento_rafaga_max&#39;</span><span class="p">,</span> <span class="s1">&#39;humedad_horaria&#39;</span><span class="p">,</span> <span class="s1">&#39;presion_max_ant&#39;</span><span class="p">,</span> <span class="s1">&#39;temp_max_ant&#39;</span><span class="p">]</span>
+<span class="n">titulos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Velocidad del Viento&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Ráfaga Máxima de Viento&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Humedad Horaria&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Presión Máxima (día anterior)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Temperatura Máxima (día anterior)&#39;</span>
+<span class="p">]</span>
 
-<span class="c1"># Crear figura con subplots</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># 1 fila, 5 columnas</span>
+<span class="c1"># Crear figura con subplots (2 filas, 3 columnas)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># Tamaño ajustado</span>
+
+<span class="c1"># Aplanamos los ejes para facilitar el indexado</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 <span class="c1"># Graficar cada variable</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histograma de </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histograma de </span><span class="si">{</span><span class="n">titulos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+<span class="c1"># Eliminar el subplot vacío (último en posición 6 si solo usamos 5)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1020,13 +1044,14 @@ Name: viento_vel, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2be83c6bfb24dbd536653d56df63b72d1103e7d5b41c2e85863e7f190114f3a0.png" src="_images/2be83c6bfb24dbd536653d56df63b72d1103e7d5b41c2e85863e7f190114f3a0.png" />
+<img alt="_images/fb3bcffe6a71ca02edfcb9524afa8ee971bf13d20861042d88495392bef311df.png" src="_images/fb3bcffe6a71ca02edfcb9524afa8ee971bf13d20861042d88495392bef311df.png" />
 </div>
 </div>
 <p>En la figura anterior, podemos observar la distribucion de frecuencia de cada una de las variables explikcativas y variable de respuesta. Se evidencia…</p>
 </section>
 <section id="analisis-de-simetria-y-datos-atipicos">
 <h2>Analisis de simetria y datos atipicos<a class="headerlink" href="#analisis-de-simetria-y-datos-atipicos" title="Link to this heading">#</a></h2>
+<p>En esta seccion…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1055,6 +1080,24 @@ temp_max_ant         0.263013
 dtype: float64
 </pre></div>
 </div>
+</div>
+</div>
+<p>Observamos que…</p>
+</section>
+<section id="analisis-bivariado">
+<h2>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
+<p>aqui realizaremos…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hora&#39;</span><span class="p">)[</span><span class="s1">&#39;viento_vel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Velocidad promedio del viento por hora&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Velocidad promedio del viento por hora&#39;}, xlabel=&#39;hora&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" src="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" />
 </div>
 </div>
 </section>
@@ -1124,6 +1167,7 @@ dtype: float64
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta">Analisis de correlacion entre variables explicativas y de respuesta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-simetria-y-datos-atipicos">Analisis de simetria y datos atipicos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a></li>
 </ul>
   </nav></div>
 
