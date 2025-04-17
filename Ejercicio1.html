@@ -400,8 +400,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-1-velocidades-del-viento">
 <h1>Ejercicio 1 - Velocidades del viento<a class="headerlink" href="#ejercicio-1-velocidades-del-viento" title="Link to this heading">#</a></h1>
-<p>En esta seccion, desarrollaremos el EDA y ETL de la base de datos de <strong>“Velocidades de viento”</strong> con el fin de comprender y analizar la problematica planteada.</p>
-<p>A continuacion, instalaremos las librerias quer seran utilizadas a lo largo del ejercicio.</p>
+<p>El pronostico de la velocidad del viento es fundamental, sobre todo por sus implicaciones en: seguridad en la aviación y la navegación, generación de energía eólica, agricultura, construcción, meteorología, recreación y deporte. Los datos suministrados, reportan diferentes mediciones que pueden explicar y permitir realizar la predicción de la velocidad del viento. En este capitulo, desarrollarenos el EDA y modelos de prediccion para la base de datos “<strong>Velocidades de viento</strong>”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -415,6 +414,8 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="eda-y-etl">
 <h1>EDA y ETL<a class="headerlink" href="#eda-y-etl" title="Link to this heading">#</a></h1>
+<p>En esta seccion, desarrollaremos el EDA y ETL de la base de datos de “<strong>Velocidades de viento</strong>” con el fin de comprender y analizar la problematica planteada.</p>
+<p>A continuacion, instalaremos las librerias quer seran utilizadas a lo largo del ejercicio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/user/Desktop/Maestria 2025/Maestria Uninorte/Primer semestre 2025/Machine Learning/Parcial1ML/docs/data_treino_dv_df_2000_2010.csv&#39;</span><span class="p">)</span>
