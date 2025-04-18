@@ -1127,7 +1127,7 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x13b2431f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1409aacd0&gt;
 </pre></div>
 </div>
 <img alt="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" src="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" />
@@ -1170,7 +1170,7 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9bdb5d4e9162cc93d3a9a0f96b0fadefd974c804942bcda44f4ab1f600836191.png" src="_images/9bdb5d4e9162cc93d3a9a0f96b0fadefd974c804942bcda44f4ab1f600836191.png" />
+<img alt="_images/91ded62f64abb95bd1c61fa4f514f51e2f88882ce76145e8faed5a399a26135c.png" src="_images/91ded62f64abb95bd1c61fa4f514f51e2f88882ce76145e8faed5a399a26135c.png" />
 </div>
 </div>
 <p>Observamos que…</p>
@@ -1296,54 +1296,47 @@ Interpretación:</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_9814</span><span class="o">/</span><span class="mf">811553419.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10239</span><span class="o">/</span><span class="mf">811553419.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>         <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> 
+<span class="ne">---&gt; </span><span class="mi">30</span>         <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">31</span>         <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">32</span>         <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="n">errores_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> 
+<span class="g g-Whitespace">     </span><span class="mi">32</span>         <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/metrics/_regression.py</span> in <span class="ni">mean_squared_error</span><span class="nt">(y_true, y_pred, sample_weight, multioutput, squared)</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="mf">0.825</span><span class="o">...</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">438</span><span class="sd">     y_type, y_true, y_pred, multioutput = _check_reg_targets(</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span><span class="sd">         y_true, y_pred, multioutput</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span><span class="sd">     )</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span> <span class="o">!=</span> <span class="s2">&quot;passthrough&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span>                 <span class="n">fit_params_last_step</span> <span class="o">=</span> <span class="n">fit_params_steps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+<span class="ne">--&gt; </span><span class="mi">394</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params_last_step</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">395</span> 
+<span class="g g-Whitespace">    </span><span class="mi">396</span>         <span class="k">return</span> <span class="bp">self</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/metrics/_regression.py</span> in <span class="ni">_check_reg_targets</span><span class="nt">(y_true, y_pred, multioutput, dtype)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="n">y_true</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">ensure_2d</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">ensure_2d</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> 
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/linear_model/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span>         <span class="n">accept_sparse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">positive</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">,</span> <span class="s2">&quot;coo&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">661</span> 
+<span class="ne">--&gt; </span><span class="mi">662</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">663</span>             <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="n">accept_sparse</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>         <span class="p">)</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span> 
-<span class="g g-Whitespace">    </span><span class="mi">799</span>         <span class="k">if</span> <span class="n">force_all_finite</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">800</span>             <span class="n">_assert_all_finite</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="n">force_all_finite</span> <span class="o">==</span> <span class="s2">&quot;allow-nan&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span> 
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="k">if</span> <span class="n">ensure_min_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">581</span>                 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span>             <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+<span class="g g-Whitespace">    </span><span class="mi">583</span> 
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">.extmath</span><span class="w"> </span><span class="kn">import</span> <span class="n">_safe_accumulator_op</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> 
-<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="k">if</span> <span class="n">_get_config</span><span class="p">()[</span><span class="s2">&quot;assume_finite&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="k">return</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span> 
+<span class="ne">--&gt; </span><span class="mi">979</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="n">multi_output</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="n">y_numeric</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span> 
+<span class="g g-Whitespace">    </span><span class="mi">981</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/_config.py</span> in <span class="ni">get_config</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="c1"># Return a copy of the threadlocal configuration so that users will</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="c1"># not be able to modify the configuration with the returned dict.</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">_get_threadlocal_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> 
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/_config.py</span> in <span class="ni">_get_threadlocal_config</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">_threadlocal</span><span class="p">,</span> <span class="s2">&quot;global_config&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>         <span class="n">_threadlocal</span><span class="o">.</span><span class="n">global_config</span> <span class="o">=</span> <span class="n">_global_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">21</span>     <span class="k">return</span> <span class="n">_threadlocal</span><span class="o">.</span><span class="n">global_config</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> 
-<span class="g g-Whitespace">     </span><span class="mi">23</span> 
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">_check_y</span><span class="nt">(y, multi_output, y_numeric)</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span> 
+<span class="g g-Whitespace">    </span><span class="mi">985</span> 
+<span class="ne">--&gt; </span><span class="mi">986</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">987</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Isolated part of check_X_y dedicated to y validation&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">988</span>     <span class="k">if</span> <span class="n">multi_output</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1488,16 +1481,25 @@ LjungBox p-value: 2.2432794434905706e-05
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_1396</span><span class="o">/</span><span class="mf">2615427783.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>                 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>                     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>                     <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">Modelo</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>                 <span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-
-<span class="ne">TypeError</span>: &#39;Ridge&#39; object is not callable
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo  alpha  ventana_dias  rmse_validacion
+8   Ridge   1.00            21         0.421889
+5   Ridge   0.10            21         0.423814
+7   Ridge   1.00            14         0.424943
+2   Ridge   0.01            21         0.425423
+11  Lasso   0.01            21         0.426776
+4   Ridge   0.10            14         0.427858
+10  Lasso   0.01            14         0.428758
+1   Ridge   0.01            14         0.430971
+6   Ridge   1.00             7         0.435969
+9   Lasso   0.01             7         0.436712
+3   Ridge   0.10             7         0.442965
+14  Lasso   0.10            21         0.448522
+13  Lasso   0.10            14         0.448594
+12  Lasso   0.10             7         0.450414
+0   Ridge   0.01             7         0.451940
+15  Lasso   1.00             7         0.900422
+16  Lasso   1.00            14         0.902146
+17  Lasso   1.00            21         0.903074
 </pre></div>
 </div>
 </div>
@@ -1560,12 +1562,12 @@ LjungBox p-value: 2.2432794434905706e-05
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📈 Tabla de comparación final entre modelos:
   modelo  alpha  ventana_dias       MAE       MSE      RMSE   MAPE (%)  \
-0  Lasso   0.01            21  0.521029  0.479432  0.692410  32.355064   
-1  Ridge   1.00            21  0.529175  0.489789  0.699849  32.553476   
+0  Lasso   0.01            21  0.522713  0.481036  0.693568  32.228967   
+1  Ridge   1.00            21  0.529935  0.490239  0.700171  32.416157   
 
    LjungBox p-value  
-0      8.115664e-10  
-1      5.210056e-11  
+0      1.047258e-07  
+1      1.423905e-08  
 </pre></div>
 </div>
 </div>
@@ -1583,7 +1585,7 @@ LjungBox p-value: 2.2432794434905706e-05
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vecinos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vecinos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 
 <span class="c1"># ORDEN TEMPORAL ASEGURADO </span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;hora&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1674,82 +1676,25 @@ LjungBox p-value: 2.2432794434905706e-05
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultados de validación:
-   modelo  alpha  ventana_dias  rmse_validacion
-8   Ridge   1.00            21         0.421770
-5   Ridge   0.10            21         0.423482
-7   Ridge   1.00            14         0.424778
-2   Ridge   0.01            21         0.425061
-11  Lasso   0.01            21         0.426810
-4   Ridge   0.10            14         0.427702
-10  Lasso   0.01            14         0.428677
-1   Ridge   0.01            14         0.430948
-6   Ridge   1.00             7         0.436786
-9   Lasso   0.01             7         0.437601
-3   Ridge   0.10             7         0.443267
-14  Lasso   0.10            21         0.448476
-13  Lasso   0.10            14         0.448495
-12  Lasso   0.10             7         0.450683
-0   Ridge   0.01             7         0.451662
-15  Lasso   1.00             7         0.900164
-16  Lasso   1.00            14         0.902002
-17  Lasso   1.00            21         0.902977
+    ventana_dias  k  rmse_validacion
+10            21  7         0.524837
+11            21  9         0.525935
+9             21  5         0.528605
+6             14  7         0.543419
+5             14  5         0.545474
+7             14  9         0.546189
+8             21  3         0.546555
+4             14  3         0.563643
+1              7  5         0.582458
+2              7  7         0.584656
+3              7  9         0.591270
+0              7  3         0.595073
 Mejor combinación encontrada:
-modelo               Ridge
-alpha                  1.0
-ventana_dias            21
-rmse_validacion    0.42177
-Name: 8, dtype: object
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3360</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;k&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_1396</span><span class="o">/</span><span class="mf">2462498012.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># Entrenar con toda la data de entrenamiento usando la mejor combinación</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">k_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> 
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Últimos T_final datos del entrenamiento</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/series.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">940</span> 
-<span class="g g-Whitespace">    </span><span class="mi">941</span>         <span class="k">elif</span> <span class="n">key_is_scalar</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">942</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">943</span> 
-<span class="g g-Whitespace">    </span><span class="mi">944</span>         <span class="k">if</span> <span class="n">is_hashable</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/series.py</span> in <span class="ni">_get_value</span><span class="nt">(self, label, takeable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1049</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1050</span>         <span class="c1"># Similar to Index.get_value, but we do not fall back to positional</span>
-<span class="ne">-&gt; </span><span class="mi">1051</span>         <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_get_values_for_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1053</span> 
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3363</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3364</span> 
-<span class="g g-Whitespace">   </span><span class="mi">3365</span>         <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isna</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasnans</span><span class="p">:</span>
-
-<span class="ne">KeyError</span>: &#39;k&#39;
+ventana_dias       21.000000
+k                   7.000000
+rmse_validacion     0.524837
+Name: 10, dtype: float64
+RMSE en el test final: 0.7792
 </pre></div>
 </div>
 </div>
@@ -1780,83 +1725,19 @@ Name: 8, dtype: object
     <span class="s1">&#39;MAPE (%)&#39;</span><span class="p">:</span> <span class="n">mape_test</span><span class="p">,</span>
     <span class="s1">&#39;LjungBox p-value&#39;</span><span class="p">:</span> <span class="n">ljungbox_pvalue</span>
 <span class="p">}</span>
-<span class="n">resultados</span>
+<span class="n">resultados_modelo</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.4516621157428661},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.4309476507654742},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.4250607563579449},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.44326705565905133},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.4277015241784099},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.4234824903237986},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.4367861473129427},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.4247777526380451},
- {&#39;modelo&#39;: &#39;Ridge&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.42177009254175923},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.43760065078254784},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.4286769532018995},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.01,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.4268102069720455},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.4506830046057396},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.4484947901380177},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 0.1,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.44847585902076015},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 7,
-  &#39;rmse_validacion&#39;: 0.9001638291958242},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 14,
-  &#39;rmse_validacion&#39;: 0.9020016136110145},
- {&#39;modelo&#39;: &#39;Lasso&#39;,
-  &#39;alpha&#39;: 1.0,
-  &#39;ventana_dias&#39;: 21,
-  &#39;rmse_validacion&#39;: 0.9029768015700258}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;modelo&#39;: &#39;KNN&#39;,
+ &#39;ventana_dias&#39;: 21,
+ &#39;k&#39;: 7,
+ &#39;MAE&#39;: 0.6037972518387593,
+ &#39;MSE&#39;: 0.607186596401489,
+ &#39;RMSE&#39;: 0.7792217889673575,
+ &#39;MAPE (%)&#39;: 43.16984660277574,
+ &#39;LjungBox p-value&#39;: 1.721179779770677e-33}
 </pre></div>
 </div>
 </div>
