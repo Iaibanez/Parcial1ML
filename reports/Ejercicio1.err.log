@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from sklearn.linear_model import LinearRegression', '', '# PARTICIÓN TRAIN/TEST', 'train_size = int(len(df) * 0.8)', 'df_train = df.iloc[:train_size]']
+['from sklearn.linear_model import Ridge, Lasso', '', 'ventanas_dias = [7, 14, 21]', 'horas_por_dia = 24', 'alphas = [0.01, 0.1, 1.0]  # valores de regularización']
 ...
-['    })', '', '# MOSTRAR RESULTADOS', 'resultados_df = pd.DataFrame(resultados)', "print(resultados_df.sort_values('rmse_validacion'))"]
+['            })', '', '# MOSTRAR RESULTADOS', 'resultados_df = pd.DataFrame(resultados)', "print(resultados_df.sort_values('rmse_validacion'))"]
 -------------------
 

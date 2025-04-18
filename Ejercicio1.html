@@ -1127,7 +1127,7 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1409aacd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x161416d60&gt;
 </pre></div>
 </div>
 <img alt="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" src="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" />
@@ -1170,7 +1170,7 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/91ded62f64abb95bd1c61fa4f514f51e2f88882ce76145e8faed5a399a26135c.png" src="_images/91ded62f64abb95bd1c61fa4f514f51e2f88882ce76145e8faed5a399a26135c.png" />
+<img alt="_images/90114f8b5d173af580458b8d7f446a8a2b786a73eb086d2f74d76bc27ffa7e92.png" src="_images/90114f8b5d173af580458b8d7f446a8a2b786a73eb086d2f74d76bc27ffa7e92.png" />
 </div>
 </div>
 <p>Observamos que…</p>
@@ -1244,10 +1244,8 @@ Interpretación:</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
-
+<p><strong>Entrenamiento y validacion del modelo</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="c1"># PARTICIÓN TRAIN/TEST</span>
 <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
@@ -1286,67 +1284,16 @@ Interpretación:</p>
         <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="n">T_dias</span><span class="p">,</span>
         <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="n">promedio_rmse</span>
     <span class="p">})</span>
-
-<span class="c1"># MOSTRAR RESULTADOS</span>
-<span class="n">resultados_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">resultados_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
+    <span class="err">```</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10239</span><span class="o">/</span><span class="mf">811553419.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>         <span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> 
-<span class="ne">---&gt; </span><span class="mi">30</span>         <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>         <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>         <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span> <span class="o">!=</span> <span class="s2">&quot;passthrough&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">393</span>                 <span class="n">fit_params_last_step</span> <span class="o">=</span> <span class="n">fit_params_steps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
-<span class="ne">--&gt; </span><span class="mi">394</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params_last_step</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">395</span> 
-<span class="g g-Whitespace">    </span><span class="mi">396</span>         <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/linear_model/_base.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>         <span class="n">accept_sparse</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">positive</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">,</span> <span class="s2">&quot;coo&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">661</span> 
-<span class="ne">--&gt; </span><span class="mi">662</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">663</span>             <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="n">accept_sparse</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span>         <span class="p">)</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">581</span>                 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span>             <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> 
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">977</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">978</span> 
-<span class="ne">--&gt; </span><span class="mi">979</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="n">multi_output</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="n">y_numeric</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">980</span> 
-<span class="g g-Whitespace">    </span><span class="mi">981</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">_check_y</span><span class="nt">(y, multi_output, y_numeric)</span>
-<span class="g g-Whitespace">    </span><span class="mi">984</span> 
-<span class="g g-Whitespace">    </span><span class="mi">985</span> 
-<span class="ne">--&gt; </span><span class="mi">986</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">987</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Isolated part of check_X_y dedicated to y validation&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">988</span>     <span class="k">if</span> <span class="n">multi_output</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selección de la mejor configuración</span>
-<span class="n">mejor_config</span> <span class="o">=</span> <span class="n">resultados_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_df</span><span class="p">[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resultados de modelo entrenado</span>
+<span class="n">resultados_lr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ResultLR.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Selección de la mejor configuración</span>
+<span class="n">mejor_config</span> <span class="o">=</span> <span class="n">resultados_lr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_lr</span><span class="p">[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 <span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
 
 <span class="c1"># Preparación de datos</span>
@@ -1391,14 +1338,16 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación final en test set:
-modelo: LinearRegression
-ventana_dias: 21
-MAE: 0.530929632021622
-MSE: 0.505558895698266
-RMSE: 0.711026649077421
-MAPE (%): 32.286277295067514
-LjungBox p-value: 2.2432794434905706e-05
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10849</span><span class="o">/</span><span class="mf">1943386856.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Preparación de datos</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">X_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">y_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;df_train&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1481,25 +1430,53 @@ LjungBox p-value: 2.2432794434905706e-05
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo  alpha  ventana_dias  rmse_validacion
-8   Ridge   1.00            21         0.421889
-5   Ridge   0.10            21         0.423814
-7   Ridge   1.00            14         0.424943
-2   Ridge   0.01            21         0.425423
-11  Lasso   0.01            21         0.426776
-4   Ridge   0.10            14         0.427858
-10  Lasso   0.01            14         0.428758
-1   Ridge   0.01            14         0.430971
-6   Ridge   1.00             7         0.435969
-9   Lasso   0.01             7         0.436712
-3   Ridge   0.10             7         0.442965
-14  Lasso   0.10            21         0.448522
-13  Lasso   0.10            14         0.448594
-12  Lasso   0.10             7         0.450414
-0   Ridge   0.01             7         0.451940
-15  Lasso   1.00             7         0.900422
-16  Lasso   1.00            14         0.902146
-17  Lasso   1.00            21         0.903074
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10849</span><span class="o">/</span><span class="mf">3999608911.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>                 <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="ne">---&gt; </span><span class="mi">42</span>                 <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>                 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>                 <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span><span class="sd">         fit_params_steps = self._check_fit_params(**fit_params)</span>
+<span class="ne">--&gt; </span><span class="mi">390</span><span class="sd">         Xt = self._fit(X, y, **fit_params_steps)</span>
+<span class="g g-Whitespace">    </span><span class="mi">391</span><span class="sd">         with _print_elapsed_time(&quot;Pipeline&quot;, self._log_message(len(self.steps) - 1)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">392</span><span class="sd">             if self._final_estimator != &quot;passthrough&quot;:</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">_fit</span><span class="nt">(self, X, y, **fit_params_steps)</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="sd">         self._validate_steps()</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd">         # Setup the memory</span>
+<span class="ne">--&gt; </span><span class="mi">318</span><span class="sd">         memory = check_memory(self.memory)</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="sd">         fit_transform_one_cached = memory.cache(_fit_transform_one)</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_memory</span><span class="nt">(memory)</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="sd">     if memory is None or isinstance(memory, str):</span>
+<span class="ne">--&gt; </span><span class="mi">305</span><span class="sd">         if parse_version(joblib.__version__) &lt; parse_version(&quot;0.12&quot;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="sd">             memory = joblib.Memory(cachedir=memory, verbose=0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span><span class="sd">         else:</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/externals/_packaging/version.py</span> in <span class="ni">parse</span><span class="nt">(version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>         <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">except</span> <span class="n">InvalidVersion</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="k">return</span> <span class="n">LegacyVersion</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/externals/_packaging/version.py</span> in <span class="ni">__init__</span><span class="nt">(self, version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">290</span> 
+<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="c1"># Store the parsed out pieces of the version</span>
+<span class="ne">--&gt; </span><span class="mi">292</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">_Version</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">293</span>             <span class="n">epoch</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">294</span>             <span class="n">release</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;release&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)),</span>
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(_cls, epoch, release, dev, pre, post, local)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
