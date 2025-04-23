@@ -352,7 +352,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -368,6 +370,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-demografico">Analisis demografico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-caracteristicas-fisicas">Analisis de caracteristicas fisicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,13 +395,743 @@ document.write(`
 <p>A continuacion, instalaremos las librerias quer seran utilizadas a lo largo del ejercicio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;HuBMAP-20-dataset_information.csv&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>image_file</th>
+      <th>width_pixels</th>
+      <th>height_pixels</th>
+      <th>anatomical_structures_segmention_file</th>
+      <th>glomerulus_segmentation_file</th>
+      <th>patient_number</th>
+      <th>race</th>
+      <th>ethnicity</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>weight_kilograms</th>
+      <th>height_centimeters</th>
+      <th>bmi_kg/m^2</th>
+      <th>laterality</th>
+      <th>percent_cortex</th>
+      <th>percent_medulla</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>aa05346ff.tiff</td>
+      <td>47340</td>
+      <td>30720</td>
+      <td>aa05346ff-anatomical-structure.json</td>
+      <td>aa05346ff.json</td>
+      <td>67347</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>58</td>
+      <td>59.0</td>
+      <td>160.0</td>
+      <td>23.0</td>
+      <td>Right</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>afa5e8098.tiff</td>
+      <td>43780</td>
+      <td>36800</td>
+      <td>afa5e8098-anatomical-structure.json</td>
+      <td>afa5e8098.json</td>
+      <td>67347</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>58</td>
+      <td>59.0</td>
+      <td>160.0</td>
+      <td>23.0</td>
+      <td>Right</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>54f2eec69.tiff</td>
+      <td>22240</td>
+      <td>30440</td>
+      <td>54f2eec69-anatomical-structure.json</td>
+      <td>54f2eec69.json</td>
+      <td>67548</td>
+      <td>Black or African American</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>58</td>
+      <td>79.9</td>
+      <td>190.5</td>
+      <td>22.0</td>
+      <td>Right</td>
+      <td>75</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>d488c759a.tiff</td>
+      <td>29020</td>
+      <td>46660</td>
+      <td>d488c759a-anatomical-structure.json</td>
+      <td>d488c759a.json</td>
+      <td>68138</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>66</td>
+      <td>81.5</td>
+      <td>158.8</td>
+      <td>32.2</td>
+      <td>Left</td>
+      <td>100</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1e2425f28.tiff</td>
+      <td>32220</td>
+      <td>26780</td>
+      <td>1e2425f28-anatomical-structure.json</td>
+      <td>1e2425f28.json</td>
+      <td>63921</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>48</td>
+      <td>131.5</td>
+      <td>193.0</td>
+      <td>35.3</td>
+      <td>Right</td>
+      <td>65</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>e79de561c.tiff</td>
+      <td>27020</td>
+      <td>16180</td>
+      <td>e79de561c-anatomical-structure.json</td>
+      <td>e79de561c.json</td>
+      <td>67026</td>
+      <td>Black or African American</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>53</td>
+      <td>73.0</td>
+      <td>166.0</td>
+      <td>26.5</td>
+      <td>Left</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>c68fe75ea.tiff</td>
+      <td>49780</td>
+      <td>26840</td>
+      <td>c68fe75ea-anatomical-structure.json</td>
+      <td>c68fe75ea.json</td>
+      <td>67112</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>56</td>
+      <td>91.2</td>
+      <td>167.6</td>
+      <td>32.5</td>
+      <td>Left</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>095bf7a1f.tiff</td>
+      <td>39000</td>
+      <td>38160</td>
+      <td>095bf7a1f-anatomical-structure.json</td>
+      <td>095bf7a1f.json</td>
+      <td>68250</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>44</td>
+      <td>71.7</td>
+      <td>160.0</td>
+      <td>28.0</td>
+      <td>Right</td>
+      <td>65</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>26dc41664.tiff</td>
+      <td>42360</td>
+      <td>38160</td>
+      <td>26dc41664-anatomical-structure.json</td>
+      <td>26dc41664.json</td>
+      <td>68304</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>66</td>
+      <td>71.3</td>
+      <td>167.6</td>
+      <td>25.4</td>
+      <td>Left</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>57512b7f1.tiff</td>
+      <td>43160</td>
+      <td>33240</td>
+      <td>57512b7f1-anatomical-structure.json</td>
+      <td>57512b7f1.json</td>
+      <td>68555</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>76</td>
+      <td>93.0</td>
+      <td>157.4</td>
+      <td>37.5</td>
+      <td>Left</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>4ef6695ce.tiff</td>
+      <td>50680</td>
+      <td>39960</td>
+      <td>4ef6695ce-anatomical-structure.json</td>
+      <td>4ef6695ce.json</td>
+      <td>66999</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>56</td>
+      <td>91.4</td>
+      <td>181.6</td>
+      <td>27.7</td>
+      <td>Right</td>
+      <td>65</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>aaa6a05cc.tiff</td>
+      <td>13013</td>
+      <td>18484</td>
+      <td>aaa6a05cc-anatomical-structure.json</td>
+      <td>aaa6a05cc.json</td>
+      <td>65631</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>73</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Left</td>
+      <td>75</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>b9a3865fc.tiff</td>
+      <td>40429</td>
+      <td>31295</td>
+      <td>b9a3865fc-anatomical-structure.json</td>
+      <td>b9a3865fc.json</td>
+      <td>67347</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>58</td>
+      <td>59.0</td>
+      <td>160.0</td>
+      <td>23.0</td>
+      <td>Right</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>cb2d976f4.tiff</td>
+      <td>49548</td>
+      <td>34940</td>
+      <td>cb2d976f4-anatomical-structure.json</td>
+      <td>cb2d976f4.json</td>
+      <td>67548</td>
+      <td>Black or African American</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>58</td>
+      <td>79.9</td>
+      <td>190.5</td>
+      <td>22.0</td>
+      <td>Right</td>
+      <td>75</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>b2dc8411c.tiff</td>
+      <td>31262</td>
+      <td>14844</td>
+      <td>b2dc8411c-anatomical-structure.json</td>
+      <td>b2dc8411c.json</td>
+      <td>67026</td>
+      <td>Black or African American</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>53</td>
+      <td>73.0</td>
+      <td>166.0</td>
+      <td>26.5</td>
+      <td>Left</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2ec3f1bb9.tiff</td>
+      <td>47723</td>
+      <td>23990</td>
+      <td>2ec3f1bb9-anatomical-structure.json</td>
+      <td>2ec3f1bb9.json</td>
+      <td>67112</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>56</td>
+      <td>91.2</td>
+      <td>167.6</td>
+      <td>32.5</td>
+      <td>Left</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0486052bb.tiff</td>
+      <td>34937</td>
+      <td>25784</td>
+      <td>0486052bb-anatomical-structure.json</td>
+      <td>0486052bb.json</td>
+      <td>67177</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>31</td>
+      <td>106.1</td>
+      <td>180.3</td>
+      <td>32.6</td>
+      <td>Right</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>3589adb90.tiff</td>
+      <td>22165</td>
+      <td>29433</td>
+      <td>3589adb90-anatomical-structure.json</td>
+      <td>3589adb90.json</td>
+      <td>68304</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>66</td>
+      <td>71.3</td>
+      <td>167.6</td>
+      <td>25.4</td>
+      <td>Left</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2f6ecfcdf.tiff</td>
+      <td>25794</td>
+      <td>31278</td>
+      <td>2f6ecfcdf-anatomical-structure.json</td>
+      <td>2f6ecfcdf.json</td>
+      <td>68555</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Female</td>
+      <td>76</td>
+      <td>93.0</td>
+      <td>157.4</td>
+      <td>37.5</td>
+      <td>Left</td>
+      <td>80</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>8242609fa.tiff</td>
+      <td>44066</td>
+      <td>31299</td>
+      <td>8242609fa-anatomical-structure.json</td>
+      <td>8242609fa.json</td>
+      <td>66999</td>
+      <td>White</td>
+      <td>Not Hispanic or Latino</td>
+      <td>Male</td>
+      <td>56</td>
+      <td>91.4</td>
+      <td>181.6</td>
+      <td>27.7</td>
+      <td>Right</td>
+      <td>65</td>
+      <td>35</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Estructura del dataset:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Nombre de variables&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Estructura del dataset:
+(20, 16)
+
+ Nombre de variables
+Index([&#39;image_file&#39;, &#39;width_pixels&#39;, &#39;height_pixels&#39;,
+       &#39;anatomical_structures_segmention_file&#39;, &#39;glomerulus_segmentation_file&#39;,
+       &#39;patient_number&#39;, &#39;race&#39;, &#39;ethnicity&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;weight_kilograms&#39;,
+       &#39;height_centimeters&#39;, &#39;bmi_kg/m^2&#39;, &#39;laterality&#39;, &#39;percent_cortex&#39;,
+       &#39;percent_medulla&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image_file                               0
+width_pixels                             0
+height_pixels                            0
+anatomical_structures_segmention_file    0
+glomerulus_segmentation_file             0
+patient_number                           0
+race                                     0
+ethnicity                                0
+sex                                      0
+age                                      0
+weight_kilograms                         1
+height_centimeters                       1
+bmi_kg/m^2                               1
+laterality                               0
+percent_cortex                           0
+percent_medulla                          0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observamos que la base de datos contiene datos faltanes. Estos se encuentran en la muestra dek paciente ‘65631’ el cual presenta NA en las variables ‘height_centimeters’, ‘weight_kilograms’, ‘bmi_kg/m^2’. Al tener una base de datos con pocas muestras (20 en total), decidimos reemplazar los valores de NA por la mediana de cada variable en funcion del sexo, de esta forma mantenemos la armonia estadistica de los datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;height_centimeters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">)[</span><span class="s1">&#39;height_centimeters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;weight_kilograms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">)[</span><span class="s1">&#39;weight_kilograms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;bmi_kg/m^2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sex&#39;</span><span class="p">)[</span><span class="s1">&#39;bmi_kg/m^2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image_file                               0
+width_pixels                             0
+height_pixels                            0
+anatomical_structures_segmention_file    0
+glomerulus_segmentation_file             0
+patient_number                           0
+race                                     0
+ethnicity                                0
+sex                                      0
+age                                      0
+weight_kilograms                         0
+height_centimeters                       0
+bmi_kg/m^2                               0
+laterality                               0
+percent_cortex                           0
+percent_medulla                          0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observamos que una vez realizado este cambio, contamos con la base de datos completa y con esto procederemos con el analisis demografico.</p>
+<section id="analisis-demografico">
+<h2>Analisis demografico<a class="headerlink" href="#analisis-demografico" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estilo general</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1">#  Gráfico de Etnia (categórica) </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ethnicity&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución de Etnia&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Etnia&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Gráfico de Sexo (categórica)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución por Sexo&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sexo&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Histograma de Edad (numérica)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución de Edad&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Edad&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Histograma de Edad (numérica)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;race&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución de Raza&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;raza&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar todo junto</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4f094b2a04ad50a6583aeeac6a69349f0271be6288b79e0d8b277b33d890df07.png" src="_images/4f094b2a04ad50a6583aeeac6a69349f0271be6288b79e0d8b277b33d890df07.png" />
+</div>
+</div>
+<p>Observamos…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de edad por sexo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;edad&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;sexo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/88c678e55eb196da80c09f53b1ec4f68c0b1b000129b743f05ef2c0bbd48f1c9.png" src="_images/88c678e55eb196da80c09f53b1ec4f68c0b1b000129b743f05ef2c0bbd48f1c9.png" />
+</div>
+</div>
+<p>observamos…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráfico de barras agrupadas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;race&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de raza por genero&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e02449d7a617de51cecb5dac69a346f41cfa9d31d34cc30fa7411433321149cf.png" src="_images/e02449d7a617de51cecb5dac69a346f41cfa9d31d34cc30fa7411433321149cf.png" />
+</div>
+</div>
+<p>observamos…</p>
+</section>
+<section id="analisis-de-caracteristicas-fisicas">
+<h2>Analisis de caracteristicas fisicas<a class="headerlink" href="#analisis-de-caracteristicas-fisicas" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;bmi_kg/m^2&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de BMI por Sexo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;BMI (kg/m²)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sexo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8b2c761f3eae742d4811e47926efe2c4e35b866a971153f276c4554e40901cec.png" src="_images/8b2c761f3eae742d4811e47926efe2c4e35b866a971153f276c4554e40901cec.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;race&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;height_centimeters&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de Altura por Raza&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altura (cm))&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Raza&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7b3334ab259d048a2b5ccac67a13c0bfee7b7f92a9d314f3b28278861c656afc.png" src="_images/7b3334ab259d048a2b5ccac67a13c0bfee7b7f92a9d314f3b28278861c656afc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight_kilograms&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de Peso por Sexo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Peso (kg)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sexo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0dbd5de34c05e3564ce4f97c645c050db6d13c204b911dbe6a00576e4cf3c311.png" src="_images/0dbd5de34c05e3564ce4f97c645c050db6d13c204b911dbe6a00576e4cf3c311.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;image_area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;width_pixels&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;height_pixels&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;image_area&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relación entre Edad y Tamaño de Imagen (Área)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Edad del Paciente&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Área de Imagen (pixeles)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/909b39a65ed7b645b5dabea1aca89a293d9c3cb6f489edc09773bde390729feb.png" src="_images/909b39a65ed7b645b5dabea1aca89a293d9c3cb6f489edc09773bde390729feb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlacion</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;image_area&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coeficiente de correlación: </span><span class="si">{</span><span class="n">correlacion</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficiente de correlación: -0.04
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Comparar percent_cortex</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;laterality&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;percent_cortex&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Corteza por Laterality&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;% Corteza&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Laterality&#39;</span><span class="p">)</span>
+
+<span class="c1"># Comparar percent_medulla</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;laterality&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;percent_medulla&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Médula por Laterality&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;% Médula&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Laterality&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/34defd526ddca3c93081640f59b2762a333641eb62c3a92a585f61e95674e568.png" src="_images/34defd526ddca3c93081640f59b2762a333641eb62c3a92a585f61e95674e568.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;patient_number&#39;</span><span class="p">,</span> <span class="s1">&#39;percent_cortex&#39;</span><span class="p">,</span> <span class="s1">&#39;percent_medulla&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;patient_number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Promedio de Corteza y Médula por Paciente&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Paciente&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0382cfb574c26b0facfd7d2ce1d4a7d3b18281adc303e1f4c0ad01fe5c591479.png" src="_images/0382cfb574c26b0facfd7d2ce1d4a7d3b18281adc303e1f4c0ad01fe5c591479.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -437,6 +1179,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-demografico">Analisis demografico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-caracteristicas-fisicas">Analisis de caracteristicas fisicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

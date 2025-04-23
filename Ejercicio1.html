@@ -380,16 +380,25 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 1 - Velocidades del viento</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renombramiento-de-columnas">Renombramiento de columnas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-tipos-de-variables">Descripcion de tipos de variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-tipos-de-variables">Descripción de tipos de variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta">Analisis de correlacion entre variables explicativas y de respuesta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-simetria-y-datos-atipicos">Analisis de simetria y datos atipicos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Análisis bivariado</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de regresion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de regresion lineal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo Arboles de decision - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rnn-regresion">Modelo RNN - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lstm-regresion">Modelo LSTM - regresion</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -424,7 +433,7 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="eda-y-etl">
 <h1>EDA y ETL<a class="headerlink" href="#eda-y-etl" title="Link to this heading">#</a></h1>
-<p>En esta seccion, desarrollaremos el EDA y ETL de la base de datos de “<strong>Velocidades de viento</strong>” con el fin de comprender y analizar la problematica planteada.</p>
+<p>En esta sección se desarrollarán los procesos de Análisis Exploratorio de Datos (EDA) y Extracción, Transformación y Carga (ETL) sobre la base de datos de “Velocidades de viento”, con el objetivo de comprender en profundidad la estructura de los datos y analizar la problemática planteada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/user/Desktop/Maestria 2025/Maestria Uninorte/Primer semestre 2025/Machine Learning/Parcial1ML/docs/data_treino_dv_df_2000_2010.csv&#39;</span><span class="p">)</span>
@@ -648,7 +657,8 @@ document.write(`
 <p>87693 rows × 13 columns</p>
 </div></div></div>
 </div>
-<p>Observamos 87693 muestras y 13 columnas de las cuales…</p>
+<p>Se observa un total de 87,693 muestras y 13 columnas, que contienen información relacionada con variables meteorológicas como humedad, presión, precipitación, temperatura y viento (incluyendo velocidad, dirección y ráfaga máxima). Además, se cuenta con una variable temporal registrada en formato horario militar.</p>
+<p>Con el fin de facilitar el manejo y análisis de los datos, se procederá a reducir la longitud de los nombres de las variables, manteniendo su significado original pero mejorando la legibilidad y eficiencia en el procesamiento.</p>
 <section id="renombramiento-de-columnas">
 <h2>Renombramiento de columnas<a class="headerlink" href="#renombramiento-de-columnas" title="Link to this heading">#</a></h2>
 <p>A continuación se muestra la correspondencia entre los nombres originales del dataset y los nuevos nombres utilizados para facilitar el análisis:</p>
@@ -734,11 +744,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Empezaremos con el analisis de las variables…</p>
+<p>Una vez realizado el cambio de nombres de las variables, se dará inicio al análisis exploratorio para comprender mejor la base de datos e identificar posibles patrones o relaciones entre las variables.</p>
 </section>
 <section id="descripcion-de-tipos-de-variables">
-<h2>Descripcion de tipos de variables<a class="headerlink" href="#descripcion-de-tipos-de-variables" title="Link to this heading">#</a></h2>
-<p>En esta seccion …</p>
+<h2>Descripción de tipos de variables<a class="headerlink" href="#descripcion-de-tipos-de-variables" title="Link to this heading">#</a></h2>
+<p>En esta sección se llevará a cabo un análisis exploratorio de datos con el objetivo de comprender la estructura del conjunto de datos, identificar patrones, detectar posibles anomalías y seleccionar variables relevantes para el desarrollo de modelos predictivos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="p">[</span>
@@ -927,7 +937,8 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>Observamos en la tabla anterior que…</p>
+<p>En la tabla anterior se presentan diversas estadísticas descriptivas de la base de datos, incluyendo la media, desviación estándar, valores mínimos y máximos, así como los cuartiles (25, 50 y 75%) y el conteo total de observaciones por variable.</p>
+<p>Entre los valores destacados, se observa que la temperatura promedio se encuentra entre <strong>20 °C</strong> y <strong>21 °C</strong>, alcanzando un máximo de <strong>35 °C</strong>. Por otro lado, la velocidad del viento suele ser baja en general; sin embargo, se registró un valor máximo de <strong>24.3 m/s</strong> en las ráfagas máximas, lo cual podría representar un indicio del potencial aprovechamiento de este recurso energético en determinadas condiciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -953,12 +964,12 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Observamos que no existen datos faltantes a lo largo del dataframe, por lo que no es necesario realizar un preprocesamiento de datos.</p>
-<p>A continuacion…</p>
+<p>Al analizar la base de datos, observamos que no se presentan datos faltantes en ninguna de las variables utilizadas para el análisis. Esto implica que no es necesario aplicar técnicas de imputación ni eliminar registros, por lo que podemos trabajar con la totalidad de la información suministrada.</p>
+<p>El objetivo principal de este proyecto es diseñar un modelo de regresión que permita comprender el comportamiento de la velocidad del viento a partir de las variables explicativas incluidas en el conjunto de datos. Para lograr este objetivo, es fundamental analizar la relación entre las variables independientes y la variable de respuesta.</p>
+<p>En la siguiente sección se realizará un análisis exploratorio de los datos con el fin de identificar patrones, tendencias y posibles relaciones entre las variables que puedan contribuir al desempeño del modelo de predicción.</p>
 </section>
 <section id="analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta">
 <h2>Analisis de correlacion entre variables explicativas y de respuesta<a class="headerlink" href="#analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta" title="Link to this heading">#</a></h2>
-<p>En esta seccion, analizaremos la correlacion entre las variables independientes (X) y la variable dependiente (y).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la correlación</span>
@@ -995,7 +1006,9 @@ dtype: int64
 <img alt="_images/df62af1db6ab6948f9a8b3cf9803616678f8c31ffa3031346e8f86533194ba18.png" src="_images/df62af1db6ab6948f9a8b3cf9803616678f8c31ffa3031346e8f86533194ba18.png" />
 </div>
 </div>
-<p>en la figura anterior, observamos…</p>
+<p>En la figura anterior, se presenta un mapa de calor que muestra el coeficiente de correlación entre las variables numéricas del conjunto de datos. A partir de esta visualización, podemos destacar que la mayoría de las variables presentan coeficientes de correlación relativamente bajos, oscilando entre 0 y 0.4.</p>
+<p>Sin embargo, algunas variables muestran correlaciones superiores a 0.8. Este comportamiento se debe principalmente a que dichas variables fueron generadas a través de técnicas de <strong>feature engineering</strong>. Por ejemplo, a partir de variables generales como humedad, presión, temperatura y viento, se derivaron nuevas variables como máximos, mínimos, dirección del viento y ráfaga máxima. Estas derivaciones naturalmente comparten información con las variables originales, generando así una alta correlación entre ellas.</p>
+<p>A continuación, observaremos el coeficiente de correlación de todas las variables con respecto a la variable objetivo: velocidad del viento, con el fin de identificar aquellas variables que podrían tener mayor influencia en el modelo de predicción.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;viento_vel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1020,9 +1033,10 @@ Name: viento_vel, dtype: float64
 </div>
 </div>
 </div>
-<p>Se evidencia una correlación significativa entre la variable de respuesta <em>“viento_vel”</em> y diversas variables independientes del conjunto de datos. Para el análisis, se seleccionarán las variables “<strong>vel_rafaga_max</strong>”, “<strong>humedad_horaria</strong>”, “<strong>presion_max_ant</strong>” y “<strong>temp_max_ant</strong>”, ya que presentan los niveles más altos de correlación con la variable objetivo.</p>
-<p>Esta selección no solo responde a su fuerza de correlación, sino también a su capacidad para representar otras variables pertenecientes a sus respectivas categorías. Es decir, variables como presión, temperatura, humedad y viento cuentan con múltiples subcategorías que derivan de una misma fuente de medición. Por esta razón, las variables seleccionadas actúan como representativas de su grupo, y las altas correlaciones observadas entre subcategorías se explican por el hecho de provenir de una misma categoría física.</p>
-<p>Analizaremos la variable de respuesta con respecto a las variables seleccionadas.</p>
+<p>Se evidencia una correlación significativa entre la variable de respuesta <strong>“viento_vel”</strong> y diversas variables independientes del conjunto de datos. Para este análisis, se seleccionarán las variables <strong>“vel_rafaga_max”</strong>, <strong>“humedad_horaria”</strong>, <strong>“presion_max_ant”</strong> y <strong>“temp_max_ant”</strong>, ya que presentan los niveles más altos de correlación con la variable objetivo.</p>
+<p>Esta selección no solo se basa en la magnitud del coeficiente de correlación, sino también en la representatividad de estas variables dentro de sus respectivas categorías. Es decir, variables como presión, temperatura, humedad y viento cuentan con múltiples subcategorías que derivan de una misma fuente de medición. Estas fueron generadas previamente mediante técnicas de feature engineering a partir de datos básicos.</p>
+<p>Por esta razón, las variables seleccionadas actúan como representantes de su grupo, y las altas correlaciones observadas entre subcategorías pueden explicarse por el hecho de provenir de una misma categoría física o métrica.</p>
+<p>En la siguiente sección, analizaremos el comportamiento de la variable objetivo respecto a estas variables seleccionadas, con el fin de explorar patrones y relaciones útiles para el desarrollo del modelo de regresión.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables a graficar</span>
@@ -1060,11 +1074,13 @@ Name: viento_vel, dtype: float64
 <img alt="_images/685c82c8ffe9250550e6a3b7d77dbcef5f9e3e5f32e7e4211d816a2faf6dc1f4.png" src="_images/685c82c8ffe9250550e6a3b7d77dbcef5f9e3e5f32e7e4211d816a2faf6dc1f4.png" />
 </div>
 </div>
-<p>En la figura anterior, podemos observar la distribucion de frecuencia de cada una de las variables explikcativas y variable de respuesta. Se evidencia…</p>
+<p>En la figura anterior se observa la distribución de frecuencia de las variables explicativas y la variable de respuesta. Se puede apreciar que variables como presión máxima, temperatura máxima, ráfaga máxima y velocidad del viento tienden a presentar una forma similar a una distribución normal.</p>
+<p>En particular, la ráfaga máxima y la velocidad del viento muestran un sesgo hacia la derecha, lo cual indica una mayor concentración de valores bajos con una cola extendida hacia valores altos. En contraste, la temperatura máxima y la presión máxima presentan distribuciones más centradas y simétricas.</p>
+<p>No obstante, la distribución de presión máxima es más estrecha y picuda, lo que sugiere una forma leptocúrtica, mientras que la distribución de temperatura máxima es más suave y se aproxima a una forma mesocúrtica.</p>
+<p>Para caracterizar de manera más precisa la simetría y forma de estas distribuciones, se calcularán los coeficientes de asimetría (skewness) y curtosis, lo que permitirá un análisis más riguroso de su comportamiento estadístico.</p>
 </section>
 <section id="analisis-de-simetria-y-datos-atipicos">
 <h2>Analisis de simetria y datos atipicos<a class="headerlink" href="#analisis-de-simetria-y-datos-atipicos" title="Link to this heading">#</a></h2>
-<p>En esta seccion…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1077,7 +1093,11 @@ Name: viento_vel, dtype: float64
 <img alt="_images/bc35a19d74bdea6ccf4b1a64da7ea3be1c95557c2ad116850059477140e3ec52.png" src="_images/bc35a19d74bdea6ccf4b1a64da7ea3be1c95557c2ad116850059477140e3ec52.png" />
 </div>
 </div>
-<p>Observamos que…</p>
+<p>En la figura anterior, se presentan los boxplots de las variables previamente analizadas. En estas gráficas, se observa que las variables relacionadas con el viento (velocidad y ráfaga máxima) muestran la presencia de datos atípicos (outliers) por encima de los límites superiores, aunque sus medianas se encuentran centradas, lo que indica una distribución relativamente equilibrada en su núcleo.</p>
+<p>En el caso de la presión máxima, la caja del boxplot es estrecha, lo que sugiere una baja dispersión: la mayoría de los valores se concentran alrededor de un rango específico. La temperatura máxima presenta un comportamiento similar, aunque en este caso se observan outliers tanto por encima como por debajo de los límites del rango intercuartílico, lo cual indica mayor variabilidad en los extremos.</p>
+<p>Por otro lado, la variable humedad horaria no presenta valores atípicos visibles, pero muestra un rango intercuartílico más amplio, lo cual revela una mayor variabilidad en su distribución en comparación con las demás variables.</p>
+<p>Estos boxplots permiten corroborar las observaciones realizadas previamente a partir de los histogramas, validando así las características básicas de la distribución de cada variable.</p>
+<p>A continuación, para tener una mejor comprensión de la simetría y forma de las distribuciones, se realizará un análisis de asimetría (skewness) y curtosis (kurtosis), lo que permitirá evaluar si las variables presentan sesgo (asimetría) o colas pesadas (curtosis) en su distribución.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span>
@@ -1095,17 +1115,89 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Observamos que…
-Interpretación:</p>
-<p>≈ 0 → distribución simétrica</p>
-<blockquote>
-<div><p>0 → asimetría positiva (cola a la derecha)
-&lt; 0 → asimetría negativa (cola a la izquierda)</p>
-</div></blockquote>
+<p>En el análisis de skewness de las variables meteorológicas, se observa que la mayoría presentan distribuciones ligeramente asimétricas, cercanas a la normalidad. Las variables viento_vel, viento_rafaga_max y temp_max_ant muestran una asimetría positiva leve, lo cual indica que sus distribuciones tienen una ligera cola hacia valores más altos, pero en general no requieren transformaciones.</p>
+<p>Por otro lado, la variable humedad_horaria presenta una asimetría negativa ligera, lo que sugiere que hay una mayor concentración de valores altos (es decir, alta humedad), con una cola hacia valores bajos. Esta también se considera aceptablemente simétrica para la mayoría de los modelos.</p>
+<p>Sin embargo, la variable presion_max_ant muestra una asimetría positiva más marcada (skewness &gt; 1), lo que indica una distribución más sesgada hacia la derecha.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kurtosis</span>
+
+<span class="n">df</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>viento_vel          -0.105828
+viento_rafaga_max    0.113629
+humedad_horaria     -0.890021
+presion_max_ant      5.819274
+temp_max_ant        -0.417240
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>El análisis de curtosis revela que la mayoría de las variables meteorológicas presentan distribuciones cercanas a lo normal. Por ejemplo, viento_vel y viento_rafaga_max tienen valores de curtosis muy próximos a cero, lo que indica que sus distribuciones son mesocúrticas, es decir, similares a una distribución normal, sin una presencia destacada de valores extremos ni colas inusuales. Del mismo modo, temp_max_ant muestra una ligera curtosis negativa, lo que sugiere una distribución algo más aplanada (platicúrtica), pero que no representa una preocupación significativa.</p>
+<p>Por otro lado, humedad_horaria también presenta curtosis negativa más pronunciada, lo cual indica una distribución aún más aplanada, con menor frecuencia de valores extremos. Esta condición no suele ser problemática, pero puede implicar menor variabilidad en los valores fuera del promedio.</p>
+<p>Sin embargo, la variable presion_max_ant destaca notablemente con una curtosis de 5.82, lo que la clasifica como leptocúrtica. Esto indica una alta concentración de datos alrededor de la media, pero también la presencia de colas pesadas, es decir, una mayor cantidad de valores extremos.</p>
+<p>A continuación, realizaremos un análisis bivariado para encontrar relaciones entre variables tanto entre la independiente (y) como las independientes (X).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kstest</span><span class="p">,</span> <span class="n">zscore</span>
+
+<span class="c1"># Especificar columnas a excluir</span>
+<span class="n">columnas_excluir</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hora&#39;</span><span class="p">,</span> <span class="s1">&#39;viento_vel&#39;</span><span class="p">]</span>
+
+<span class="c1"># Filtrar columnas numéricas para la prueba</span>
+<span class="n">columnas_ks</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">columnas_excluir</span><span class="p">]</span>
+
+<span class="c1"># Diccionario para guardar resultados</span>
+<span class="n">ks_results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Aplicar la prueba de Kolmogorov-Smirnov</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columnas_ks</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Convertir valores a numérico y eliminar nulos</span>
+        <span class="n">serie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        
+        <span class="c1"># Normalizar (estandarizar) la serie</span>
+        <span class="n">serie_normalizada</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">serie</span><span class="p">)</span>
+        
+        <span class="c1"># Aplicar prueba KS comparando con distribución normal estándar</span>
+        <span class="n">stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">kstest</span><span class="p">(</span><span class="n">serie_normalizada</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Guardar resultados</span>
+        <span class="n">ks_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;KS Statistic&#39;</span><span class="p">:</span> <span class="n">stat</span><span class="p">,</span> <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">p_value</span><span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">ks_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)}</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">resultado</span> <span class="ow">in</span> <span class="n">ks_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2"> → KS: </span><span class="si">{</span><span class="n">resultado</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;KS Statistic&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, p-value: </span><span class="si">{</span><span class="n">resultado</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p-value&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>viento_dir → KS: 0.21540831884600303, p-value: 0.0
+humedad_max_ant → KS: 0.08634264138840075, p-value: 0.0
+humedad_min_ant → KS: 0.0643174922561659, p-value: 7.9586675e-316
+temp_max_ant → KS: 0.06696964630114338, p-value: 0.0
+temp_min_ant → KS: 0.06277629820113922, p-value: 7.044432818342984e-301
+humedad_horaria → KS: 0.07390455307154764, p-value: 0.0
+presion_horaria → KS: 0.09381899422838846, p-value: 0.0
+precipitacion → KS: 0.4791713558905091, p-value: 0.0
+viento_rafaga_max → KS: 0.04162047824931375, p-value: 1.9648894696136483e-132
+presion_max_ant → KS: 0.07661951069140971, p-value: 0.0
+presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con la tabla anterior, podemos observar que las variables no superan la prueba de normalidad Kolmogorov-Smirnov.</p>
+<p>Esto es importante de considerar a la hora de desarrollar los modelos, puestos que estos muestran sesgos y como observamos en los boxplot, algunas presentan una cantidad grande de outliers por lo que se debe considerar metodos de escalamiento de datos que sean robustos ante outliers.</p>
 </section>
 <section id="analisis-bivariado">
-<h2>Analisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
-<p>aqui realizaremos…</p>
+<h2>Análisis bivariado<a class="headerlink" href="#analisis-bivariado" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;hora&#39;</span><span class="p">)[</span><span class="s1">&#39;viento_vel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Velocidad promedio del viento por hora&#39;</span><span class="p">)</span>
@@ -1119,7 +1211,7 @@ Interpretación:</p>
 <img alt="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" src="_images/9077b2dc4415e52e0fbecf98ff1cdda6c18a7d73352fdb8c6356a8e00a5de3ad.png" />
 </div>
 </div>
-<p>Observamos que…</p>
+<p>En la figura anterior, podemos observar la distribución de la velocidad media del viento (variable de respuesta, eje Y) en función de la hora. En la gráfica se observa que, en promedio, se presentan mayores velocidades entre las 11:00 y las 23:00 que entre las 00:00 y las 10:00. Adicionalmente, observamos que los puntos con menores velocidades se encuentran entre las 05:00 y las 08:00, lo que puede ser una muestra clara de la tendencia de la velocidad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1127,31 +1219,34 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x161416d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x300eca5e0&gt;
 </pre></div>
 </div>
 <img alt="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" src="_images/209c78e34e83ae60a14d29bb4dddd86487226d34e0f31a87b623327f274b60ef.png" />
 </div>
 </div>
-<p>De la figura anterior, podemos destacar las siguientes parejas de variables:</p>
+<p>En la figura anterior, se presenta un <em>pairplot</em> que muestra la relación entre cada par de variables analizadas. A partir de estos diagramas de dispersión, se identifican las siguientes relaciones que merecen un análisis más detallado:</p>
 <ul class="simple">
-<li><p>humedad_horaria vs temp_max_ant</p></li>
-<li><p>humedad_horaria vs presion_max_ant</p></li>
-<li><p>precipitacion vs temp_max_ant</p></li>
-<li><p>precipitacion vs humedad_horaria</p></li>
-<li><p>presion_max_ant vs temp_max_ant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humedad_horaria</span></code> vs <code class="docutils literal notranslate"><span class="pre">temp_max_ant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humedad_horaria</span></code> vs <code class="docutils literal notranslate"><span class="pre">presion_max_ant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">precipitacion</span></code> vs <code class="docutils literal notranslate"><span class="pre">temp_max_ant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">precipitacion</span></code> vs <code class="docutils literal notranslate"><span class="pre">humedad_horaria</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presion_max_ant</span></code> vs <code class="docutils literal notranslate"><span class="pre">temp_max_ant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">viento_vel</span></code> vs <code class="docutils literal notranslate"><span class="pre">presion_max_ant</span></code></p></li>
 </ul>
+<p>A continuación, se procederá a examinar estas relaciones específicas con mayor profundidad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lista de pares (x, y) a graficar</span>
 <span class="c1"># Pares originales (los vamos a invertir en el gráfico)</span>
 <span class="n">pares</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s1">&#39;humedad_horaria&#39;</span><span class="p">,</span><span class="s1">&#39;temp_max_ant&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;humedad_horaria&#39;</span><span class="p">,</span> <span class="s1">&#39;presion_max_ant&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="s1">&#39;humedad_horaria&#39;</span><span class="p">,</span> <span class="s1">&#39;presion_max_ant&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;presion_max_ant&#39;</span><span class="p">,</span> <span class="s1">&#39;viento_vel&#39;</span><span class="p">)</span>
 <span class="p">]</span>
 
 <span class="c1"># Crear figura con subplots: 1 fila, 2 columnas</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 <span class="c1"># Graficar cada par con regplot</span>
@@ -1170,10 +1265,12 @@ Interpretación:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/90114f8b5d173af580458b8d7f446a8a2b786a73eb086d2f74d76bc27ffa7e92.png" src="_images/90114f8b5d173af580458b8d7f446a8a2b786a73eb086d2f74d76bc27ffa7e92.png" />
+<img alt="_images/d3ea43e45a8ba2572ca5bfb3ad69ae22ba2f29fe15f398c957fdbb1b79ca6533.png" src="_images/d3ea43e45a8ba2572ca5bfb3ad69ae22ba2f29fe15f398c957fdbb1b79ca6533.png" />
 </div>
 </div>
-<p>Observamos que…</p>
+<p><strong>Relación entre humedad, temperatura y presión</strong></p>
+<p>En el gráfico anterior se observa la relación entre la humedad horaria, la temperatura y la presión máxima. Mediante el regplot, se identifica una relación inversamente proporcional entre la humedad y estas dos variables: a medida que la humedad aumenta, tanto la temperatura como la presión tienden a disminuir. Este hallazgo resulta relevante, ya que podría influir en la predicción de la velocidad del viento.</p>
+<p>Adicionalmente, se evidencia una relación directamente proporcional entre la presión y la velocidad del viento: cuando la presión aumenta, la velocidad del viento también lo hace. Estas correlaciones son determinantes para entender el comportamiento de la variable de respuesta y, por tanto, son clave para el desarrollo de la investigación.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pares</span> <span class="o">=</span> <span class="p">[</span>
@@ -1195,27 +1292,59 @@ Interpretación:</p>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># Título general</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Relaciones entre variables meteorológicas&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Relaciones entre variables&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16404f294e1d59d1a50d1bc7095bb51c0c23797ffdc9bd2635292c4a85913824.png" src="_images/16404f294e1d59d1a50d1bc7095bb51c0c23797ffdc9bd2635292c4a85913824.png" />
+<img alt="_images/4c6f62f57dcb078ef029bb8879e88c06498882db94136c3ae3643641bcac828c.png" src="_images/4c6f62f57dcb078ef029bb8879e88c06498882db94136c3ae3643641bcac828c.png" />
 </div>
 </div>
-<p>Por otro lado, vemos en la figura anterior …</p>
+<p>En la figura anterior, podemos observar relaciones y distribuciones entre las variables. La relación entre la temperatura máxima del día anterior y la precipitación no muestra un patrón claro, aunque la mayoría de los valores de precipitación se concentran cerca de cero, lo que sugiere una distribución sesgada hacia valores bajos. En el caso de la humedad horaria y la precipitación, sí se observa una relación positiva: a mayor humedad, tiende a haber más precipitación, aunque también con una alta concentración de ceros. La relación entre temperatura máxima anterior y presión máxima muestra una distribución en forma de nube densa sin una tendencia lineal clara, aunque se concentran en un rango específico de presión enytre 870 y 910. Por último, la relación entre ráfagas máximas de viento y precipitación también presenta una distribución con alta concentración en valores bajos de precipitación, pero se nota que los valores más altos de precipitación pueden asociarse con mayores ráfagas de viento.</p>
 <p>Una vez realizado el analisis exploratorio, realizaremos el desarrollo de modelos de regresion para lograr predecir el valor de la velocidad del tiempo</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-regresion">
 <h1>Modelos de regresion<a class="headerlink" href="#modelos-de-regresion" title="Link to this heading">#</a></h1>
 <p>Para los modelos de regresion, realizaremos una lista de modelos para poder tener un abanico de opciones que mejor logren entender el comportamiento de los datos. Estos modelos son los siguientes:</p>
-<p>Par ala validacion, utilizaremos cross-validation para segvurar quye los modelos aplicados sea generalizables. A continuacion, instalaremos todas las librerias generales para cada uno de los modelos a realizar.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>K-NN</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear Regression</p></td>
+</tr>
+<tr class="row-even"><td><p>Ridge</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lasso</p></td>
+</tr>
+<tr class="row-even"><td><p>Decision Tree</p></td>
+</tr>
+<tr class="row-odd"><td><p>Random Forest</p></td>
+</tr>
+<tr class="row-even"><td><p>XGBoost</p></td>
+</tr>
+<tr class="row-odd"><td><p>SVM</p></td>
+</tr>
+<tr class="row-even"><td><p>MLP</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNN</p></td>
+</tr>
+<tr class="row-even"><td><p>LSTM</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Para garantizar que los modelos desarrollados sean generalizables, se aplicará validación cruzada (cross-validation) mediante un enfoque de ventana deslizante (sliding window). Esta metodología se selecciona debido a que las particiones respetan la tendencia temporal de la velocidad del viento, evitando así problemas de fuga de datos (data leakage) y asegurando una evaluación realista.</p>
+<p>En primer lugar, se instalarán y cargarán las librerías necesarias para el desarrollo de los modelos. El análisis comenzará con el modelo de regresión lineal (el más básico), seguido de técnicas más avanzadas en fases posteriores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
@@ -1226,7 +1355,17 @@ Interpretación:</p>
 </div>
 <section id="modelo-de-regresion-lineal">
 <h2>Modelo de regresion lineal<a class="headerlink" href="#modelo-de-regresion-lineal" title="Link to this heading">#</a></h2>
-<p>En el siguiente codigo observamos la cofiguracion general para el desarrollo de los modelos. Aqui definimos las variables independientes y dependientes que utilizaremos para el desarrollo de modelos. Para este modelo en coincreto, se seleccionaron las variables analiadas en el EDA. La razon de usarlas es debvido a que este modelo es sensible a multicolunealidad entre variables independientes por lo que es necesario descartar variables que se expliquen mutuamente. ES por eso que con lo mencuioinado anteriuormente en el EDA, urilizaremos “<strong>viento_rafaga_max</strong>”, “<strong>humedad_horaria</strong>”, “<strong>presion_max_ant</strong>” y “<strong>temp_max_ant</strong>”.</p>
+<p>En el siguiente código se establece la configuración general para el desarrollo de los modelos, definiendo las variables independientes (predictoras) y la variable dependiente (objetivo).</p>
+<p>Para este modelo en particular, se seleccionaron las variables analizadas durante el Análisis Exploratorio de Datos (EDA), basándose en los siguientes criterios:</p>
+<p>Sensibilidad a multicolinealidad: El modelo requiere descartar variables altamente correlacionadas entre sí, ya que podrían explicar el mismo fenómeno (redundancia).
+Relevancia estadística: Las variables elegidas demostraron patrones significativos durante el EDA.
+Las variables finalmente incluidas son:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">viento_rafaga_max</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humedad_horaria</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">presion_max_ant</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temp_max_ant</span></code></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CONFIGURACIÓN GENERAL </span>
@@ -1237,19 +1376,22 @@ Interpretación:</p>
 <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;viento_vel&#39;</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;hora&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
 
 <span class="n">ventanas_dias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
 <span class="n">horas_por_dia</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="c1"># Crear lista vacía para guardar resultados</span>
+<span class="n">tabla_resultados_test</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Entrenamiento y validacion del modelo</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="c1"># PARTICIÓN TRAIN/TEST</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="c1"># RESULTADOS</span>
 <span class="n">resultados</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1258,9 +1400,9 @@ Interpretación:</p>
     <span class="n">T_horas</span> <span class="o">=</span> <span class="n">T_dias</span> <span class="o">*</span> <span class="n">horas_por_dia</span>
     <span class="n">errores_val</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_horas</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_horas</span> <span class="o">-</span> <span class="n">horas_por_dia</span><span class="p">,</span> <span class="n">horas_por_dia</span><span class="p">):</span>
         <span class="n">train_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">]</span>
-        <span class="n">val_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">val_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="o">+</span><span class="n">horas_por_dia</span><span class="p">]</span>
 
         <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
         <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
@@ -1284,16 +1426,53 @@ Interpretación:</p>
         <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="n">T_dias</span><span class="p">,</span>
         <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="n">promedio_rmse</span>
     <span class="p">})</span>
-    <span class="err">```</span>
+    
+<span class="n">resultados_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_df</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             modelo  ventana_dias  rmse_validacion
+0  LinearRegression             7         0.569932
+1  LinearRegression            14         0.564264
+2  LinearRegression            21         0.562489
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para agilizar el proceso de desarrollo de modelos, se diseno una funcion que calcule las metricas que se desean analizar y al final se guardaran en una tabla para al finalziar el analisis, poder conlcuir a partir de ellas comprando asi todo los resuktados de cada modelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">guardar_resultados_test</span><span class="p">(</span><span class="n">modelo_nombre</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">param_str</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">ventana_dias</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calcula métricas y guarda resultados en tabla_resultados_test&quot;&quot;&quot;</span>
+
+    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">ljungbox</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">tabla_resultados_test</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="n">modelo_nombre</span><span class="p">,</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="n">ventana_dias</span><span class="p">,</span>
+        <span class="s1">&#39;param&#39;</span><span class="p">:</span> <span class="n">param_str</span><span class="p">,</span>
+        <span class="s1">&#39;MAE&#39;</span><span class="p">:</span> <span class="n">mae</span><span class="p">,</span>
+        <span class="s1">&#39;MSE&#39;</span><span class="p">:</span> <span class="n">mse</span><span class="p">,</span>
+        <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
+        <span class="s1">&#39;R2&#39;</span><span class="p">:</span> <span class="n">r2</span><span class="p">,</span>
+        <span class="s1">&#39;MAPE (%)&#39;</span><span class="p">:</span> <span class="n">mape</span><span class="p">,</span>
+        <span class="s1">&#39;LjungBox p-value&#39;</span><span class="p">:</span> <span class="n">ljungbox</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resultados de modelo entrenado</span>
-<span class="n">resultados_lr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ResultLR.csv&quot;</span><span class="p">)</span>
-
-<span class="c1"># Selección de la mejor configuración</span>
-<span class="n">mejor_config</span> <span class="o">=</span> <span class="n">resultados_lr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_lr</span><span class="p">[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selección de la mejor configuración</span>
+<span class="n">mejor_config</span> <span class="o">=</span> <span class="n">resultados_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_df</span><span class="p">[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 <span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
 
 <span class="c1"># Preparación de datos</span>
@@ -1312,50 +1491,75 @@ Interpretación:</p>
 <span class="n">final_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_final</span><span class="p">,</span> <span class="n">y_train_final</span><span class="p">)</span>
 <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">final_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Métricas</span>
-<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-<span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">ljungbox</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Resultados finales</span>
-<span class="n">resultados_test_final</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;LinearRegression&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]),</span>
-    <span class="s1">&#39;MAE&#39;</span><span class="p">:</span> <span class="n">mae</span><span class="p">,</span>
-    <span class="s1">&#39;MSE&#39;</span><span class="p">:</span> <span class="n">mse</span><span class="p">,</span>
-    <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
-    <span class="s1">&#39;MAPE (%)&#39;</span><span class="p">:</span> <span class="n">mape</span><span class="p">,</span>
-    <span class="s1">&#39;LjungBox p-value&#39;</span><span class="p">:</span> <span class="n">ljungbox</span>
-<span class="p">}</span>
-
-<span class="c1"># Mostrar</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluación final en test set:&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resultados_test_final</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Guardar métricas con la función creada</span>
+<span class="n">guardar_resultados_test</span><span class="p">(</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;LinearRegression&#39;</span><span class="p">,</span>
+    <span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
+    <span class="n">y_pred</span><span class="o">=</span><span class="n">y_test_pred</span><span class="p">,</span>
+    <span class="n">param_str</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+    <span class="n">ventana_dias</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10849</span><span class="o">/</span><span class="mf">1943386856.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Preparación de datos</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">X_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">y_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;df_train&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.530762</td>
+      <td>0.503996</td>
+      <td>0.709926</td>
+      <td>0.606147</td>
+      <td>32.247794</td>
+      <td>5.748761e-09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="modelo-ridge-y-lasso-regresion">
 <h2>Modelo Ridge y Lasso - regresion<a class="headerlink" href="#modelo-ridge-y-lasso-regresion" title="Link to this heading">#</a></h2>
-<p>Para los siguientes modelos, al ser mas complejos estos no necesitan realizar analisis de multicolinealidad a las variables ya que estos no son sensibles a la multicolinealidad. por ende, setrabajaran los todas las variables disponibles de la base de datos</p>
+<p>Para los siguientes modelos, al ser mas complejos estos no necesitan realizar analisis de multicolinealidad a las variables ya que estos no son sensibles a la multicolinealidad. por ende, setrabajaran los todas las variables disponibles de la base de datos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;viento_dir&#39;</span><span class="p">,</span><span class="s1">&#39;humedad_max_ant&#39;</span><span class="p">,</span>
@@ -1367,47 +1571,39 @@ Interpretación:</p>
 </div>
 </div>
 </div>
+<p>Teniendo en cuenta que los modelos se entrenaran de la misma forma, se diseno una funcion que logre entrenar los modelos con la metodologia planteada anteriormente. En la siguiente linea de codigo tenemos la definicion de la funcion.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterGrid</span>
 
-<span class="n">ventanas_dias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
-<span class="n">horas_por_dia</span> <span class="o">=</span> <span class="mi">24</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>  <span class="c1"># valores de regularización</span>
 
-<span class="c1"># PARTICIÓN TRAIN/TEST</span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="p">,</span> <span class="n">modelo_nombre</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">):</span>
+    <span class="n">resultados</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="n">param_grid</span><span class="p">))</span>
 
-<span class="c1"># MODELOS a evaluar</span>
-<span class="n">modelos</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Ridge&#39;</span><span class="p">:</span> <span class="n">Ridge</span><span class="p">,</span>
-    <span class="s1">&#39;Lasso&#39;</span><span class="p">:</span> <span class="n">Lasso</span>
-<span class="p">}</span>
-
-<span class="c1"># RESULTADOS</span>
-<span class="n">resultados</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">nombre_modelo</span><span class="p">,</span> <span class="n">Modelo</span> <span class="ow">in</span> <span class="n">modelos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">T_dias</span> <span class="ow">in</span> <span class="n">ventanas_dias</span><span class="p">:</span>
             <span class="n">T_horas</span> <span class="o">=</span> <span class="n">T_dias</span> <span class="o">*</span> <span class="n">horas_por_dia</span>
             <span class="n">errores_val</span> <span class="o">=</span> <span class="p">[]</span>
 
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_horas</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_horas</span> <span class="o">-</span> <span class="n">horas_por_dia</span><span class="p">,</span> <span class="n">horas_por_dia</span><span class="p">):</span>
                 <span class="n">train_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">]</span>
-                <span class="n">val_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">val_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="o">+</span><span class="n">horas_por_dia</span><span class="p">]</span>
 
                 <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
                 <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
                 <span class="n">X_val</span> <span class="o">=</span> <span class="n">val_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
                 <span class="n">y_val</span> <span class="o">=</span> <span class="n">val_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
 
-                <span class="c1"># Pipeline: escalado + modelo</span>
                 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
                     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-                    <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">Modelo</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">))</span>
+                    <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">modelo_cls</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span>
                 <span class="p">])</span>
 
                 <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1417,27 +1613,58 @@ Interpretación:</p>
 
             <span class="n">promedio_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errores_val</span><span class="p">)</span>
             <span class="n">resultados</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="n">nombre_modelo</span><span class="p">,</span>
-                <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">,</span>
+                <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="n">modelo_nombre</span><span class="p">,</span>
+                <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
                 <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="n">T_dias</span><span class="p">,</span>
                 <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="n">promedio_rmse</span>
             <span class="p">})</span>
 
-<span class="c1"># MOSTRAR RESULTADOS</span>
-<span class="n">resultados_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">resultados_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aqui realizamos el entrenamienro y validacion de los modelos Ridge y Lasso</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+
+<span class="c1"># Grid para Ridge</span>
+<span class="n">param_grid_ridge</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">resultados_ridge</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">Ridge</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;Ridge&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_ridge</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Mostrar los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_ridge</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_10849</span><span class="o">/</span><span class="mf">3999608911.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>                 <span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-<span class="ne">---&gt; </span><span class="mi">42</span>                 <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>                 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>                 <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">k9</span><span class="o">/</span><span class="n">_sfb2dlj32z_v_srr2ny3qnm0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_3376</span><span class="o">/</span><span class="mf">184692098.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">}</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">resultados_ridge</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+
+<span class="nn">/var/folders/k9/_sfb2dlj32z_v_srr2ny3qnm0000gn/T/ipykernel_3376/61897539.py</span> in <span class="ni">validacion_temporal_grid</span><span class="nt">(df_train, features, target, modelo_cls, modelo_nombre, param_grid, ventanas_dias, horas_por_dia)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>                 <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> 
+<span class="ne">---&gt; </span><span class="mi">33</span>                 <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>                 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>                 <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **fit_params)</span>
 <span class="g g-Whitespace">    </span><span class="mi">388</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1447,34 +1674,74 @@ Interpretación:</p>
 <span class="g g-Whitespace">    </span><span class="mi">392</span><span class="sd">             if self._final_estimator != &quot;passthrough&quot;:</span>
 
 <span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">_fit</span><span class="nt">(self, X, y, **fit_params_steps)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="sd">         self._validate_steps()</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd">         # Setup the memory</span>
-<span class="ne">--&gt; </span><span class="mi">318</span><span class="sd">         memory = check_memory(self.memory)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="sd">         fit_transform_one_cached = memory.cache(_fit_transform_one)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span><span class="sd">                 cloned_transformer = clone(transformer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span><span class="sd">             # Fit or load from cache the current transformer</span>
+<span class="ne">--&gt; </span><span class="mi">348</span><span class="sd">             X, fitted_transformer = fit_transform_one_cached(</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span><span class="sd">                 cloned_transformer,</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span><span class="sd">                 X,</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_memory</span><span class="nt">(memory)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="sd">     if memory is None or isinstance(memory, str):</span>
-<span class="ne">--&gt; </span><span class="mi">305</span><span class="sd">         if parse_version(joblib.__version__) &lt; parse_version(&quot;0.12&quot;):</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="sd">             memory = joblib.Memory(cachedir=memory, verbose=0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span><span class="sd">         else:</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/joblib/memory.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span><span class="sd">     def __call__(self, *args, **kwargs):</span>
+<span class="ne">--&gt; </span><span class="mi">312</span><span class="sd">         return self.func(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span><span class="sd">     def call_and_shelve(self, *args, **kwargs):</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/externals/_packaging/version.py</span> in <span class="ni">parse</span><span class="nt">(version)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">72</span>         <span class="k">return</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">except</span> <span class="n">InvalidVersion</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="k">return</span> <span class="n">LegacyVersion</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py</span> in <span class="ni">_fit_transform_one</span><span class="nt">(transformer, X, y, weight, message_clsname, message, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">891</span><span class="sd">     with _print_elapsed_time(message_clsname, message):</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span><span class="sd">         if hasattr(transformer, &quot;fit_transform&quot;):</span>
+<span class="ne">--&gt; </span><span class="mi">893</span><span class="sd">             res = transformer.fit_transform(X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">894</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">895</span><span class="sd">             res = transformer.fit(X, y, **fit_params).transform(X)</span>
 
-<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/externals/_packaging/version.py</span> in <span class="ni">__init__</span><span class="nt">(self, version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span> 
-<span class="g g-Whitespace">    </span><span class="mi">291</span>         <span class="c1"># Store the parsed out pieces of the version</span>
-<span class="ne">--&gt; </span><span class="mi">292</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">_Version</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>             <span class="n">epoch</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span>             <span class="n">release</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;release&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)),</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span><span class="sd">             # fit method of arity 2 (supervised transformation)</span>
+<span class="ne">--&gt; </span><span class="mi">855</span><span class="sd">             return self.fit(X, y, **fit_params).transform(X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span><span class="sd"> </span>
 
-<span class="nn">&lt;string&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(_cls, epoch, release, dev, pre, post, local)</span>
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/preprocessing/_data.py</span> in <span class="ni">transform</span><span class="nt">(self, X, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span><span class="sd">         copy = copy if copy is not None else self.copy</span>
+<span class="ne">--&gt; </span><span class="mi">973</span><span class="sd">         X = self._validate_data(</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span><span class="sd">             X,</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span><span class="sd">             reset=False,</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py</span> in <span class="ni">_validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span><span class="sd">             raise ValueError(&quot;Validation should be done on X, y or both.&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span><span class="sd">         elif not no_val_X and no_val_y:</span>
+<span class="ne">--&gt; </span><span class="mi">566</span><span class="sd">             X = check_array(X, **check_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span><span class="sd">             out = X</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span><span class="sd">         elif no_val_X and not no_val_y:</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span><span class="sd">     dtypes_orig = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">616</span><span class="sd">     has_pd_integer_array = False</span>
+<span class="ne">--&gt; </span><span class="mi">617</span><span class="sd">     if hasattr(array, &quot;dtypes&quot;) and hasattr(array.dtypes, &quot;__array__&quot;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span><span class="sd">         # throw warning if columns are sparse. If all columns are sparse, then</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span><span class="sd">         # array.sparse exists and sparsity will be preserved (later).</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/generic.py</span> in <span class="ni">dtypes</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5657</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">5658</span>         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">5659</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">object_</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5660</span> 
+<span class="g g-Whitespace">   </span><span class="mi">5661</span>     <span class="k">def</span><span class="w"> </span><span class="nf">astype</span><span class="p">(</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/series.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, index, dtype, name, copy, fastpath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>                 <span class="n">manager</span> <span class="o">=</span> <span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;mode.data_manager&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>                 <span class="k">if</span> <span class="n">manager</span> <span class="o">==</span> <span class="s2">&quot;block&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">443</span>                     <span class="n">data</span> <span class="o">=</span> <span class="n">SingleBlockManager</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>                 <span class="k">elif</span> <span class="n">manager</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>                     <span class="n">data</span> <span class="o">=</span> <span class="n">SingleArrayManager</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="nn">/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/internals/managers.py</span> in <span class="ni">from_array</span><span class="nt">(cls, array, index)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1572</span>         <span class="n">Constructor</span> <span class="k">for</span> <span class="k">if</span> <span class="n">we</span> <span class="n">have</span> <span class="n">an</span> <span class="n">array</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">yet</span> <span class="n">a</span> <span class="n">Block</span><span class="o">.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1573</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1574</span><span class="s2">         block = new_block(array, placement=slice(0, len(index)), ndim=1)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1575</span><span class="s2">         return cls(block, index)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1576</span><span class="s2"> </span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1483,72 +1750,198 @@ Interpretación:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SELECCIÓN MEJOR CONFIGURACIÓN POR MODELO </span>
-<span class="n">resultados_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
-<span class="n">mejores_configs</span> <span class="o">=</span> <span class="n">resultados_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">)[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid para Lasso</span>
+<span class="n">param_grid_lasso</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="p">}</span>
 
-<span class="c1"># EVALUACIÓN FINAL EN TEST SET </span>
-<span class="n">resultados_test_final</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">resultados_lasso</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">Ridge</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;Lasso&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_ridge</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
 
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">mejores_configs</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">modelo_nombre</span> <span class="o">=</span> <span class="n">fila</span><span class="p">[</span><span class="s1">&#39;modelo&#39;</span><span class="p">]</span>
-    <span class="n">modelo_clase</span> <span class="o">=</span> <span class="n">Ridge</span> <span class="k">if</span> <span class="n">modelo_nombre</span> <span class="o">==</span> <span class="s1">&#39;Ridge&#39;</span> <span class="k">else</span> <span class="n">Lasso</span>
-    <span class="n">alpha_final</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">fila</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
-    <span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fila</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
-
-    <span class="c1"># Últimos datos para entrenamiento</span>
-    <span class="n">X_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-    <span class="n">y_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-
-    <span class="n">modelo_final</span> <span class="o">=</span> <span class="n">modelo_clase</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha_final</span><span class="p">)</span>
-    <span class="n">final_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-        <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">modelo_final</span><span class="p">)</span>
-    <span class="p">])</span>
-
-    <span class="n">final_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_final</span><span class="p">,</span> <span class="n">y_train_final</span><span class="p">)</span>
-    <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">final_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    
-        <span class="c1"># Métricas</span>
-    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-    <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-    <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">mape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="n">ljungbox</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="n">resultados_test_final</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="n">modelo_nombre</span><span class="p">,</span>
-        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">alpha_final</span><span class="p">,</span>
-        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">fila</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]),</span>
-        <span class="s1">&#39;MAE&#39;</span><span class="p">:</span> <span class="n">mae</span><span class="p">,</span>
-        <span class="s1">&#39;MSE&#39;</span><span class="p">:</span> <span class="n">mse</span><span class="p">,</span>
-        <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
-        <span class="s1">&#39;MAPE (%)&#39;</span><span class="p">:</span> <span class="n">mape</span><span class="p">,</span>
-        <span class="s1">&#39;LjungBox p-value&#39;</span><span class="p">:</span> <span class="n">ljungbox</span>
-    <span class="p">})</span>
-
-<span class="c1"># === MOSTRAR TABLA FINAL COMPARATIVA ===</span>
-<span class="n">tabla_comparacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados_test_final</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📈 Tabla de comparación final entre modelos:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tabla_comparacion</span><span class="p">)</span>
+<span class="c1"># Mostrar los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_lasso</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📈 Tabla de comparación final entre modelos:
-  modelo  alpha  ventana_dias       MAE       MSE      RMSE   MAPE (%)  \
-0  Lasso   0.01            21  0.522713  0.481036  0.693568  32.228967   
-1  Ridge   1.00            21  0.529935  0.490239  0.700171  32.416157   
-
-   LjungBox p-value  
-0      1.047258e-07  
-1      1.423905e-08  
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo             params  ventana_dias  rmse_validacion
+11  Lasso     {&#39;alpha&#39;: 1.0}            21         0.543055
+5   Lasso     {&#39;alpha&#39;: 0.1}            21         0.547787
+10  Lasso     {&#39;alpha&#39;: 1.0}            14         0.548655
+4   Lasso     {&#39;alpha&#39;: 0.1}            14         0.553764
+2   Lasso    {&#39;alpha&#39;: 0.01}            21         0.554487
+8   Lasso  {&#39;alpha&#39;: 0.0001}            21         0.556653
+1   Lasso    {&#39;alpha&#39;: 0.01}            14         0.561432
+7   Lasso  {&#39;alpha&#39;: 0.0001}            14         0.564796
+9   Lasso     {&#39;alpha&#39;: 1.0}             7         0.568855
+3   Lasso     {&#39;alpha&#39;: 0.1}             7         0.580882
+0   Lasso    {&#39;alpha&#39;: 0.01}             7         0.603927
+6   Lasso  {&#39;alpha&#39;: 0.0001}             7         0.620078
 </pre></div>
 </div>
 </div>
 </div>
+<p>Para poder evaluar el modelo, se diseno una funcion para poder generalizar el proceso de seleccion de mejores hiperparametros, entrenamienro finla y test del modelo. A esta funcion se le anadio la funcion de calculo de metricas mostrado anetriormente por lo que agiliza mucha mas el desarrollo de los siguietes modelos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">):</span>
+    <span class="n">mejores_configs</span> <span class="o">=</span> <span class="n">resultados_validacion</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">resultados_validacion</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">)[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">mejores_configs</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">modelo_nombre</span> <span class="o">=</span> <span class="n">fila</span><span class="p">[</span><span class="s1">&#39;modelo&#39;</span><span class="p">]</span>
+        <span class="n">modelo_cls</span> <span class="o">=</span> <span class="n">modelos_dict</span><span class="p">[</span><span class="n">modelo_nombre</span><span class="p">]</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">fila</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+        <span class="n">ventana_dias</span> <span class="o">=</span> <span class="n">fila</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span>
+        <span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ventana_dias</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
+
+        <span class="c1"># Preparar datos</span>
+        <span class="n">X_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
+        <span class="n">y_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
+        <span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+
+        <span class="c1"># Modelo con parámetros óptimos</span>
+        <span class="n">modelo_final</span> <span class="o">=</span> <span class="n">modelo_cls</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+            <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+            <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">modelo_final</span><span class="p">)</span>
+        <span class="p">])</span>
+        <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_final</span><span class="p">,</span> <span class="n">y_train_final</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+        <span class="c1"># Guardar resultados</span>
+        <span class="n">guardar_resultados_test</span><span class="p">(</span>
+            <span class="n">modelo_nombre</span><span class="o">=</span><span class="n">modelo_nombre</span><span class="p">,</span>
+            <span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
+            <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span>
+            <span class="n">param_str</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">params</span><span class="p">),</span>
+            <span class="n">ventana_dias</span><span class="o">=</span><span class="n">ventana_dias</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En la siguiente linea de codigo, observamos la aplicacion de dicha funcion para los modelos de Ridge y Lasso.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Ridge&#39;</span><span class="p">:</span> <span class="n">Ridge</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_ridge</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">modelos_dict2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Lasso&#39;</span><span class="p">:</span> <span class="n">Lasso</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_lasso</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict2</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Podemos observar qye klos resultados entre los tres modelos desarrollados son similares. Sin embargo el modelo de Lasso ha tenenido ligeramente peor desemepeno que el lineal y Ridge.</p>
 </section>
 <section id="modelo-knn-regresion">
 <h2>Modelo KNN - regresion<a class="headerlink" href="#modelo-knn-regresion" title="Link to this heading">#</a></h2>
@@ -1556,170 +1949,998 @@ Interpretación:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vecinos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 
-<span class="c1"># ORDEN TEMPORAL ASEGURADO </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;hora&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># PARTICIÓN TRAIN/TEST </span>
-<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>
-
-<span class="c1"># RESULTADOS </span>
-<span class="n">resultados</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">T_dias</span> <span class="ow">in</span> <span class="n">ventanas_dias</span><span class="p">:</span>
-    <span class="n">T_horas</span> <span class="o">=</span> <span class="n">T_dias</span> <span class="o">*</span> <span class="n">horas_por_dia</span>
-
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vecinos</span><span class="p">:</span>
-        <span class="n">errores_val</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="c1"># Validación deslizante sobre el set de entrenamiento</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">T_horas</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">train_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">]</span>
-            <span class="n">val_data</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">T_horas</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-
-            <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-            <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-            <span class="n">X_val</span> <span class="o">=</span> <span class="n">val_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-            <span class="n">y_val</span> <span class="o">=</span> <span class="n">val_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-
-            <span class="c1"># Pipeline: escalado + modelo</span>
-            <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-                <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-                <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">))</span>
-            <span class="p">])</span>
-
-            <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-            <span class="n">rmse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">errores_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
-
-        <span class="c1"># Promedio RMSE para esta combinación</span>
-        <span class="n">promedio_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errores_val</span><span class="p">)</span>
-        <span class="n">resultados</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-            <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="n">T_dias</span><span class="p">,</span>
-            <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span>
-            <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="n">promedio_rmse</span>
-        <span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MOSTRAR RESULTADOS </span>
-<span class="n">resultados_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
-<span class="n">mejor_config</span> <span class="o">=</span> <span class="n">resultados_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultados_df</span><span class="p">[</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados de validación:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">resultados_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor combinación encontrada:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">)</span>
-
-<span class="c1"># Entrenar con toda la data de entrenamiento usando la mejor combinación</span>
-<span class="n">T_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">horas_por_dia</span><span class="p">)</span>
-<span class="n">k_final</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">])</span>
-
-<span class="c1"># Últimos T_final datos del entrenamiento</span>
-<span class="n">X_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-<span class="n">y_train_final</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="n">T_final</span><span class="p">:]</span>
-
-<span class="c1"># Test completo</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-
-<span class="c1"># Modelo final</span>
-<span class="n">final_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-    <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k_final</span><span class="p">))</span>
-<span class="p">])</span>
-
-<span class="n">final_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_final</span><span class="p">,</span> <span class="n">y_train_final</span><span class="p">)</span>
-<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">final_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE en el test final: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultados de validación:
-    ventana_dias  k  rmse_validacion
-10            21  7         0.524837
-11            21  9         0.525935
-9             21  5         0.528605
-6             14  7         0.543419
-5             14  5         0.545474
-7             14  9         0.546189
-8             21  3         0.546555
-4             14  3         0.563643
-1              7  5         0.582458
-2              7  7         0.584656
-3              7  9         0.591270
-0              7  3         0.595073
-Mejor combinación encontrada:
-ventana_dias       21.000000
-k                   7.000000
-rmse_validacion     0.524837
-Name: 10, dtype: float64
-RMSE en el test final: 0.7792
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cálculo de métricas </span>
-<span class="n">mae_test</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-<span class="n">mse_test</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1"># Cuidado: evitar división por cero en MAPE</span>
-<span class="n">mape_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">100</span>
-
-<span class="c1"># Ljung-Box Test para autocorrelación de los errores </span>
-<span class="n">residuos</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">y_test_pred</span>
-<span class="n">ljungbox_result</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">residuos</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ljungbox_pvalue</span> <span class="o">=</span> <span class="n">ljungbox_result</span><span class="p">[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Guardar en un diccionario para futura tabla</span>
-<span class="n">resultados_modelo</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;KNN&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">mejor_config</span><span class="p">[</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">]),</span>
-    <span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="n">k_final</span><span class="p">,</span>
-    <span class="s1">&#39;MAE&#39;</span><span class="p">:</span> <span class="n">mae_test</span><span class="p">,</span>
-    <span class="s1">&#39;MSE&#39;</span><span class="p">:</span> <span class="n">mse_test</span><span class="p">,</span>
-    <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="n">rmse_test</span><span class="p">,</span>
-    <span class="s1">&#39;MAPE (%)&#39;</span><span class="p">:</span> <span class="n">mape_test</span><span class="p">,</span>
-    <span class="s1">&#39;LjungBox p-value&#39;</span><span class="p">:</span> <span class="n">ljungbox_pvalue</span>
+<span class="c1"># Param grid</span>
+<span class="n">param_grid_knn</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
 <span class="p">}</span>
-<span class="n">resultados_modelo</span>
+
+<span class="n">resultados_knn</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">KNeighborsRegressor</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_knn</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Mostrar los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_knn</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;modelo&#39;: &#39;KNN&#39;,
- &#39;ventana_dias&#39;: 21,
- &#39;k&#39;: 7,
- &#39;MAE&#39;: 0.6037972518387593,
- &#39;MSE&#39;: 0.607186596401489,
- &#39;RMSE&#39;: 0.7792217889673575,
- &#39;MAPE (%)&#39;: 43.16984660277574,
- &#39;LjungBox p-value&#39;: 1.721179779770677e-33}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo              params  ventana_dias  rmse_validacion
+11    knn  {&#39;n_neighbors&#39;: 7}            21         0.666563
+14    knn  {&#39;n_neighbors&#39;: 9}            21         0.667480
+8     knn  {&#39;n_neighbors&#39;: 5}            21         0.671916
+5     knn  {&#39;n_neighbors&#39;: 4}            21         0.679698
+10    knn  {&#39;n_neighbors&#39;: 7}            14         0.688967
+7     knn  {&#39;n_neighbors&#39;: 5}            14         0.691107
+13    knn  {&#39;n_neighbors&#39;: 9}            14         0.692514
+2     knn  {&#39;n_neighbors&#39;: 3}            21         0.695857
+4     knn  {&#39;n_neighbors&#39;: 4}            14         0.698176
+1     knn  {&#39;n_neighbors&#39;: 3}            14         0.712884
+6     knn  {&#39;n_neighbors&#39;: 5}             7         0.737922
+9     knn  {&#39;n_neighbors&#39;: 7}             7         0.741038
+3     knn  {&#39;n_neighbors&#39;: 4}             7         0.742284
+12    knn  {&#39;n_neighbors&#39;: 9}             7         0.748027
+0     knn  {&#39;n_neighbors&#39;: 3}             7         0.754096
 </pre></div>
 </div>
 </div>
 </div>
-<p>En el codigo anterior calculamos las metricas de MAPE, MAE, MSE y Ljung-box para compararlos con los demas modelos que desarrollaremos.</p>
+<p>Observamos que…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict3</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;knn&#39;</span><span class="p">:</span> <span class="n">KNeighborsRegressor</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_knn</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict3</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.680075</td>
+      <td>0.760734</td>
+      <td>0.872201</td>
+      <td>0.403164</td>
+      <td>49.472287</td>
+      <td>1.269213e-118</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>En el codigo anterior observamos las diferencias entre knn y el resto de modelos. Vemos que en algunas metricas existen mejoras, sin embargo…</p>
+</section>
+<section id="modelo-arboles-de-decision-regresion">
+<h2>Modelo Arboles de decision - regresion<a class="headerlink" href="#modelo-arboles-de-decision-regresion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+<span class="c1"># Param grid</span>
+<span class="n">param_grid_dt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">resultados_dt</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;DecisionTree&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_dt</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Mostrar los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_dt</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          modelo                                     params  ventana_dias  \
+8   DecisionTree  {&#39;max_depth&#39;: 3, &#39;min_samples_split&#39;: 10}            21   
+5   DecisionTree   {&#39;max_depth&#39;: 3, &#39;min_samples_split&#39;: 5}            21   
+2   DecisionTree   {&#39;max_depth&#39;: 3, &#39;min_samples_split&#39;: 2}            21   
+17  DecisionTree  {&#39;max_depth&#39;: 5, &#39;min_samples_split&#39;: 10}            21   
+4   DecisionTree   {&#39;max_depth&#39;: 3, &#39;min_samples_split&#39;: 5}            14   
+
+    rmse_validacion  
+8          0.613286  
+5          0.613344  
+2          0.613650  
+17         0.622016  
+4          0.623177  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict4</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DecisionTree&#39;</span><span class="p">:</span> <span class="n">DecisionTreeRegressor</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_dt</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict4</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.680075</td>
+      <td>0.760734</td>
+      <td>0.872201</td>
+      <td>0.403164</td>
+      <td>49.472287</td>
+      <td>1.269213e-118</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DecisionTree</td>
+      <td>21</td>
+      <td>{'max_depth': 3, 'min_samples_split': 10}</td>
+      <td>0.558036</td>
+      <td>0.529684</td>
+      <td>0.727794</td>
+      <td>0.584435</td>
+      <td>34.693009</td>
+      <td>2.384663e-15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="modelo-random-forest-regresion">
+<h2>Modelo Random Forest - regresion<a class="headerlink" href="#modelo-random-forest-regresion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="c1"># 1. Definir el grid de hiperparámetros</span>
+<span class="n">param_grid_rf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="c1"># 2. Ejecutar la validación temporal</span>
+<span class="n">resultados_rf</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;RandomForest&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_rf</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Ver los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_rf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          modelo                                  params  ventana_dias  \
+5   RandomForest   {&#39;max_depth&#39;: 5, &#39;n_estimators&#39;: 100}            21   
+2   RandomForest    {&#39;max_depth&#39;: 5, &#39;n_estimators&#39;: 50}            21   
+11  RandomForest  {&#39;max_depth&#39;: 10, &#39;n_estimators&#39;: 100}            21   
+4   RandomForest   {&#39;max_depth&#39;: 5, &#39;n_estimators&#39;: 100}            14   
+1   RandomForest    {&#39;max_depth&#39;: 5, &#39;n_estimators&#39;: 50}            14   
+
+    rmse_validacion  
+5          0.556498  
+2          0.557273  
+11         0.563742  
+4          0.565000  
+1          0.565938  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict5</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;RandomForest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_rf</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict5</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.680075</td>
+      <td>0.760734</td>
+      <td>0.872201</td>
+      <td>0.403164</td>
+      <td>49.472287</td>
+      <td>1.269213e-118</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DecisionTree</td>
+      <td>21</td>
+      <td>{'max_depth': 3, 'min_samples_split': 10}</td>
+      <td>0.558036</td>
+      <td>0.529684</td>
+      <td>0.727794</td>
+      <td>0.584435</td>
+      <td>34.693009</td>
+      <td>2.384663e-15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RandomForest</td>
+      <td>21</td>
+      <td>{'max_depth': 5, 'n_estimators': 100}</td>
+      <td>0.532140</td>
+      <td>0.493808</td>
+      <td>0.702715</td>
+      <td>0.612581</td>
+      <td>33.645143</td>
+      <td>4.126510e-16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="modelo-xgboost-regresion">
+<h2>Modelo XGBoost - regresion<a class="headerlink" href="#modelo-xgboost-regresion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBRegressor</span>
+
+<span class="c1"># 1. Definir el grid de hiperparámetros para XGBoost</span>
+<span class="n">param_grid_xgb</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># 2. Ejecutar la validación temporal con XGBRegressor</span>
+<span class="n">resultados_xgb</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">XGBRegressor</span><span class="p">,</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_xgb</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Ver los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_xgb</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     modelo                                             params  ventana_dias  \
+8   XGBoost  {&#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;n_esti...            21   
+11  XGBoost  {&#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;n_esti...            21   
+7   XGBoost  {&#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;n_esti...            14   
+10  XGBoost  {&#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;n_esti...            14   
+6   XGBoost  {&#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;n_esti...             7   
+
+    rmse_validacion  
+8          0.572497  
+11         0.578637  
+7          0.588119  
+10         0.593786  
+6          0.620651  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict6</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;XGBoost&#39;</span><span class="p">:</span> <span class="n">XGBRegressor</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_xgb</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict6</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.680075</td>
+      <td>0.760734</td>
+      <td>0.872201</td>
+      <td>0.403164</td>
+      <td>49.472287</td>
+      <td>1.269213e-118</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DecisionTree</td>
+      <td>21</td>
+      <td>{'max_depth': 3, 'min_samples_split': 10}</td>
+      <td>0.558036</td>
+      <td>0.529684</td>
+      <td>0.727794</td>
+      <td>0.584435</td>
+      <td>34.693009</td>
+      <td>2.384663e-15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RandomForest</td>
+      <td>21</td>
+      <td>{'max_depth': 5, 'n_estimators': 100}</td>
+      <td>0.532140</td>
+      <td>0.493808</td>
+      <td>0.702715</td>
+      <td>0.612581</td>
+      <td>33.645143</td>
+      <td>4.126510e-16</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>XGBoost</td>
+      <td>21</td>
+      <td>{'learning_rate': 0.1, 'max_depth': 5, 'n_esti...</td>
+      <td>0.552754</td>
+      <td>0.537959</td>
+      <td>0.733457</td>
+      <td>0.577943</td>
+      <td>35.910097</td>
+      <td>5.464110e-16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="modelo-support-vector-machine-svm">
+<h2>Modelo Support Vector Machine (SVM)<a class="headerlink" href="#modelo-support-vector-machine-svm" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVR</span>
+
+<span class="c1"># 1. Definir el grid de hiperparámetros para SVM</span>
+<span class="n">param_grid_svm</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">],</span>  <span class="c1"># Tipo de kernel</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>                  <span class="c1"># Parámetro de regularización</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="c1"># Coeficiente para kernel &#39;rbf&#39;/&#39;poly&#39;</span>
+    <span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">]</span>         <span class="c1"># Margen de error en SVR</span>
+<span class="p">}</span>
+
+<span class="c1"># 3. Ejecutar la validación temporal con SVR</span>
+<span class="n">resultados_svm</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">SVR</span><span class="p">,</span>  <span class="c1"># Usamos el pipeline</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;SVM&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_svm</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. Ver los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_svm</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo                                             params  ventana_dias  \
+29    SVM  {&#39;C&#39;: 10, &#39;epsilon&#39;: 0.01, &#39;gamma&#39;: 0.01, &#39;ker...            21   
+8     SVM  {&#39;C&#39;: 0.1, &#39;epsilon&#39;: 0.01, &#39;gamma&#39;: 0.1, &#39;ker...            21   
+2     SVM  {&#39;C&#39;: 0.1, &#39;epsilon&#39;: 0.01, &#39;gamma&#39;: 0.01, &#39;ke...            21   
+14    SVM  {&#39;C&#39;: 1, &#39;epsilon&#39;: 0.01, &#39;gamma&#39;: 0.01, &#39;kern...            21   
+20    SVM  {&#39;C&#39;: 1, &#39;epsilon&#39;: 0.01, &#39;gamma&#39;: 0.1, &#39;kerne...            21   
+
+    rmse_validacion  
+29         0.543371  
+8          0.546752  
+2          0.546752  
+14         0.547816  
+20         0.547816  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict7</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;SVM&#39;</span><span class="p">:</span> <span class="n">SVR</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_svm</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict7</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.529987</td>
+      <td>0.528637</td>
+      <td>0.727075</td>
+      <td>0.585256</td>
+      <td>36.846898</td>
+      <td>1.535310e-20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.535058</td>
+      <td>0.546119</td>
+      <td>0.738999</td>
+      <td>0.571540</td>
+      <td>36.923302</td>
+      <td>1.992728e-25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>1.000467</td>
+      <td>1.498638</td>
+      <td>1.224189</td>
+      <td>-0.175762</td>
+      <td>78.444827</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.680075</td>
+      <td>0.760734</td>
+      <td>0.872201</td>
+      <td>0.403164</td>
+      <td>49.472287</td>
+      <td>1.269213e-118</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DecisionTree</td>
+      <td>21</td>
+      <td>{'max_depth': 3, 'min_samples_split': 10}</td>
+      <td>0.558036</td>
+      <td>0.529684</td>
+      <td>0.727794</td>
+      <td>0.584435</td>
+      <td>34.693009</td>
+      <td>2.384663e-15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RandomForest</td>
+      <td>21</td>
+      <td>{'max_depth': 5, 'n_estimators': 100}</td>
+      <td>0.532140</td>
+      <td>0.493808</td>
+      <td>0.702715</td>
+      <td>0.612581</td>
+      <td>33.645143</td>
+      <td>4.126510e-16</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>XGBoost</td>
+      <td>21</td>
+      <td>{'learning_rate': 0.1, 'max_depth': 5, 'n_esti...</td>
+      <td>0.552754</td>
+      <td>0.537959</td>
+      <td>0.733457</td>
+      <td>0.577943</td>
+      <td>35.910097</td>
+      <td>5.464110e-16</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SVM</td>
+      <td>21</td>
+      <td>{'C': 10, 'epsilon': 0.01, 'gamma': 0.01, 'ker...</td>
+      <td>0.516578</td>
+      <td>0.477416</td>
+      <td>0.690953</td>
+      <td>0.625442</td>
+      <td>33.734031</td>
+      <td>2.680542e-09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="modelo-ann-multi-layer-perceptron-mlp-regresion">
+<h3>Modelo ANN Multi Layer Perceptron (MLP) - regresion<a class="headerlink" href="#modelo-ann-multi-layer-perceptron-mlp-regresion" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+
+<span class="n">param_grid_MLP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)],</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="s1">&#39;tanh&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;adam&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="s1">&#39;learning_rate_init&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># 3. Ejecutar la validación temporal con SVR</span>
+<span class="n">resultados_mlp</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelo_cls</span><span class="o">=</span><span class="n">MLPRegressor</span><span class="p">,</span>  <span class="c1"># Usamos el pipeline</span>
+    <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;MLP&#39;</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_MLP</span><span class="p">,</span>
+    <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. Ver los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultados_mlp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo                                             params  ventana_dias  \
+5     MLP  {&#39;activation&#39;: &#39;relu&#39;, &#39;alpha&#39;: 0.001, &#39;hidden...            21   
+29    MLP  {&#39;activation&#39;: &#39;tanh&#39;, &#39;alpha&#39;: 0.001, &#39;hidden...            21   
+17    MLP  {&#39;activation&#39;: &#39;relu&#39;, &#39;alpha&#39;: 0.01, &#39;hidden_...            21   
+41    MLP  {&#39;activation&#39;: &#39;tanh&#39;, &#39;alpha&#39;: 0.01, &#39;hidden_...            21   
+47    MLP  {&#39;activation&#39;: &#39;tanh&#39;, &#39;alpha&#39;: 0.01, &#39;hidden_...            21   
+
+    rmse_validacion  
+5          0.556178  
+29         0.558242  
+17         0.558439  
+41         0.559174  
+47         0.560724  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict8</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;MLP&#39;</span><span class="p">:</span> <span class="n">MLPRegressor</span>
+<span class="p">}</span>
+
+<span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
+    <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_mlp</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+    <span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">modelos_dict</span><span class="o">=</span><span class="n">modelos_dict8</span><span class="p">,</span>
+    <span class="n">horas_por_dia</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tabla_resultados_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>ventana_dias</th>
+      <th>param</th>
+      <th>MAE</th>
+      <th>MSE</th>
+      <th>RMSE</th>
+      <th>R2</th>
+      <th>MAPE (%)</th>
+      <th>LjungBox p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MLP</td>
+      <td>21</td>
+      <td>{'activation': 'relu', 'alpha': 0.001, 'hidden...</td>
+      <td>0.53126</td>
+      <td>0.488737</td>
+      <td>0.699097</td>
+      <td>0.618071</td>
+      <td>34.224519</td>
+      <td>1.974536e-07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="modelo-rnn-regresion">
+<h3>Modelo RNN - regresion<a class="headerlink" href="#modelo-rnn-regresion" title="Link to this heading">#</a></h3>
+</section>
+<section id="modelo-lstm-regresion">
+<h3>Modelo LSTM - regresion<a class="headerlink" href="#modelo-lstm-regresion" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -1783,16 +3004,25 @@ RMSE en el test final: 0.7792
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 1 - Velocidades del viento</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-y-etl">EDA y ETL</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renombramiento-de-columnas">Renombramiento de columnas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-tipos-de-variables">Descripcion de tipos de variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-tipos-de-variables">Descripción de tipos de variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-entre-variables-explicativas-y-de-respuesta">Analisis de correlacion entre variables explicativas y de respuesta</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-simetria-y-datos-atipicos">Analisis de simetria y datos atipicos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Analisis bivariado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Análisis bivariado</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de regresion</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de regresion lineal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo Arboles de decision - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rnn-regresion">Modelo RNN - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lstm-regresion">Modelo LSTM - regresion</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
