@@ -432,14 +432,13 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConvergenceWarning</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConvergenceWarning</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">ConvergenceWarning</span><span class="p">)</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
 </pre></div>
 </div>
 </div>
@@ -1294,14 +1293,10 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x146e1e510&gt;
 </pre></div>
 </div>
+<img alt="_images/2d5bafd7b976f090fd3deea2db51a29fcc59f4864157ded04139adfb5c812894.png" src="_images/2d5bafd7b976f090fd3deea2db51a29fcc59f4864157ded04139adfb5c812894.png" />
 </div>
 </div>
 <p>En la figura anterior, se presenta un <em>pairplot</em> que muestra la relación entre cada par de variables analizadas. A partir de estos diagramas de dispersión, se identifican las siguientes relaciones que merecen un análisis más detallado:</p>
@@ -1344,20 +1339,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Graficar cada par con regplot</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pares</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">})</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
-<img alt="_images/7dd60754325110a615aac98a3884424ce59951d566f1dd951cd14936ec480db3.png" src="_images/7dd60754325110a615aac98a3884424ce59951d566f1dd951cd14936ec480db3.png" />
+<img alt="_images/ee140ce1b823f6467f0384363c2bbfc8023dbeac8c71e30e56be62bc42c58cc9.png" src="_images/ee140ce1b823f6467f0384363c2bbfc8023dbeac8c71e30e56be62bc42c58cc9.png" />
 </div>
 </div>
 <p><strong>Relación entre humedad, temperatura y presión</strong></p>
@@ -1391,19 +1373,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Graficar cada par con regplot</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pares</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
-<img alt="_images/8786694951faf4cec646e9aec7b6f00e8d4689e128a7f23a1e92fe8abec01ce7.png" src="_images/8786694951faf4cec646e9aec7b6f00e8d4689e128a7f23a1e92fe8abec01ce7.png" />
+<img alt="_images/23352e1f5c8faa95d64b20ab26e1d9e65a1fe7b18053b2fabf3ebc15f86ff4be.png" src="_images/23352e1f5c8faa95d64b20ab26e1d9e65a1fe7b18053b2fabf3ebc15f86ff4be.png" />
 </div>
 </div>
 <p>En la figura anterior, podemos observar relaciones y distribuciones entre las variables. La relación entre la temperatura máxima del día anterior y la precipitación no muestra un patrón claro, aunque la mayoría de los valores de precipitación se concentran cerca de cero, lo que sugiere una distribución sesgada hacia valores bajos. En el caso de la humedad horaria y la precipitación, sí se observa una relación positiva: a mayor humedad, tiende a haber más precipitación, aunque también con una alta concentración de ceros. La relación entre temperatura máxima anterior y presión máxima muestra una distribución en forma de nube densa sin una tendencia lineal clara, aunque se concentran en un rango específico de presión enytre 870 y 910. Por último, la relación entre ráfagas máximas de viento y precipitación también presenta una distribución con alta concentración en valores bajos de precipitación, pero se nota que los valores más altos de precipitación pueden asociarse con mayores ráfagas de viento.</p>
