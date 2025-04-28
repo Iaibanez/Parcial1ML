@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from sklearn.linear_model import Ridge, Lasso', '', '# Grid para Ridge', 'param_grid_ridge = {', "    'alpha': [0.01, 0.1,0.0001, 1.0],"]
+['from sklearn.linear_model import Ridge, Lasso', '', '# Grid para Lasso', 'param_grid_lasso = {', "    'alpha': [0.01, 0.1,0.0001, 1.0],"]
 ...
-['    ventanas_dias=[7, 14, 21]', ')', '', '# Mostrar los mejores resultados', "print(resultados_ridge.sort_values('rmse_validacion'))"]
+['    ventanas_dias=[7, 14, 21]', ')', '', '# Mostrar los mejores resultados', "print(resultados_lasso.sort_values('rmse_validacion'))"]
 -------------------
 
