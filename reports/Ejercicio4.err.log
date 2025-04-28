@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import rasterio', 'from rasterio.plot import show', 'from matplotlib.lines import Line2D', '', '# === Leer imagen TIFF ===']
+['import os', 'import tifffile', '', 'for idx, row in df_merged.iterrows():', "    image_id = row['id']"]
 ...
-[']', 'ax.legend(handles=handles, title="Estructuras", loc="upper right")', 'ax.set_title("Superposición de estructuras anatómicas")', "ax.axis('off')", 'plt.show()']
+['    try:', '        image = tifffile.imread(image_path)', '        print(f"✅ Imagen {image_id} cargada exitosamente con shape {image.shape}")', '    except Exception as e:', '        print(f"❌ Error cargando imagen {image_id}: {e}")']
 -------------------
 

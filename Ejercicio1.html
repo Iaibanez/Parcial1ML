@@ -386,12 +386,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Análisis bivariado</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de regresion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de regresion lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de Regresión</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de Regresión lineal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-modelo">Entrenamiento del modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - regresion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - regresion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo Arboles de decision - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - Regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - Regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo: Árboles de Decisión - Regresión</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
@@ -1223,7 +1223,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x304220250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1555a2610&gt;
 </pre></div>
 </div>
 <img alt="_images/d3abd91b3a26760eb3e81cba433f6cbfd52ecbc4de7b5fe72bdb38a2dd834f4a.png" src="_images/d3abd91b3a26760eb3e81cba433f6cbfd52ecbc4de7b5fe72bdb38a2dd834f4a.png" />
@@ -1269,7 +1269,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e1527295ab3d938051670ec520b9fa3735d9005851537a8b4fdddd3aae42d1ed.png" src="_images/e1527295ab3d938051670ec520b9fa3735d9005851537a8b4fdddd3aae42d1ed.png" />
+<img alt="_images/cbf0c040403898d8073704566b33fe7a05691e44e2afadf998cf3f732b355ef8.png" src="_images/cbf0c040403898d8073704566b33fe7a05691e44e2afadf998cf3f732b355ef8.png" />
 </div>
 </div>
 <p><strong>Relación entre humedad, temperatura y presión</strong></p>
@@ -1311,7 +1311,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-regresion">
-<h1>Modelos de regresion<a class="headerlink" href="#modelos-de-regresion" title="Link to this heading">#</a></h1>
+<h1>Modelos de Regresión<a class="headerlink" href="#modelos-de-regresion" title="Link to this heading">#</a></h1>
 <p>Para los modelos de regresion, realizaremos una lista de modelos para poder tener un abanico de opciones que mejor logren entender el comportamiento de los datos. Estos modelos son los siguientes:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1358,7 +1358,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <section id="modelo-de-regresion-lineal">
-<h2>Modelo de regresion lineal<a class="headerlink" href="#modelo-de-regresion-lineal" title="Link to this heading">#</a></h2>
+<h2>Modelo de Regresión lineal<a class="headerlink" href="#modelo-de-regresion-lineal" title="Link to this heading">#</a></h2>
 <p>En el siguiente código se establece la configuración general para el desarrollo de los modelos, definiendo las variables independientes (predictoras) y la variable dependiente (objetivo).</p>
 <p>Para este modelo en particular, se seleccionaron las variables analizadas durante el Análisis Exploratorio de Datos (EDA), basándose en los siguientes criterios:</p>
 <p>Sensibilidad a multicolinealidad: El modelo requiere descartar variables altamente correlacionadas entre sí, ya que podrían explicar el mismo fenómeno (redundancia).
@@ -1573,7 +1573,7 @@ Las variables finalmente incluidas son:</p>
 <p>Los resultados presentados en la tabla corresponden a la evaluación del modelo Linear Regression sobre el conjunto de testing. El modelo, entrenado con una ventana deslizante de 21 días, obtuvo un RMSE de 0.709926, un MAE de 0.530762 y un R² de 0.606147, indicando un desempeño aceptable al explicar aproximadamente el 60% de la variabilidad de los datos de prueba. El MAPE fue de 32.25%, y el test de Ljung-Box mostró un valor de p muy bajo, sugiriendo la presencia de autocorrelación en los residuos.</p>
 </section>
 <section id="modelo-ridge-y-lasso-regresion">
-<h2>Modelo Ridge y Lasso - regresion<a class="headerlink" href="#modelo-ridge-y-lasso-regresion" title="Link to this heading">#</a></h2>
+<h2>Modelo Ridge y Lasso - Regresión<a class="headerlink" href="#modelo-ridge-y-lasso-regresion" title="Link to this heading">#</a></h2>
 <p>Para los siguientes modelos, dado que son de mayor complejidad y no presentan sensibilidad a la multicolinealidad, no será necesario realizar un análisis previo de este fenómeno sobre las variables. Por lo tanto, se trabajará directamente con todas las variables disponibles en la base de datos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1765,107 +1765,6 @@ Las variables finalmente incluidas son:</p>
 <span class="g g-Whitespace">    </span><span class="mi">919</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">920</span>     <span class="c1"># fit method of arity 2 (supervised transformation)</span>
 <span class="ne">--&gt; </span><span class="mi">921</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/preprocessing/_data.py:894,</span> in <span class="ni">StandardScaler.fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">892</span> <span class="c1"># Reset internal state before fitting</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">894</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py:1389,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1382</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1385</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1388</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1389</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/preprocessing/_data.py:930,</span> in <span class="ni">StandardScaler.partial_fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">898</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Online computation of mean and std on X for later scaling.</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span><span class="sd"> All of X is processed as a single batch. This is intended for cases</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">927</span><span class="sd">     Fitted scaler.</span>
-<span class="g g-Whitespace">    </span><span class="mi">928</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">929</span> <span class="n">first_call</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;n_samples_seen_&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">930</span> <span class="n">X</span> <span class="o">=</span> <span class="n">validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">931</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">933</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">FLOAT_DTYPES</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span>     <span class="n">ensure_all_finite</span><span class="o">=</span><span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">reset</span><span class="o">=</span><span class="n">first_call</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">938</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">940</span> <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py:2944,</span> in <span class="ni">validate_data</span><span class="nt">(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2942</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-<span class="g g-Whitespace">   </span><span class="mi">2943</span> <span class="k">elif</span> <span class="ow">not</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="n">no_val_y</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2944</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2945</span> <span class="k">elif</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">no_val_y</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2946</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py:920,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">917</span>     <span class="k">def</span><span class="w"> </span><span class="nf">is_sparse</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">918</span>         <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">920</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="s2">&quot;sparse&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">array</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_sparse</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">921</span>         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">922</span>             <span class="s2">&quot;pandas.DataFrame with sparse columns found.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">923</span>             <span class="s2">&quot;It will be converted to a dense numpy array.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">924</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">926</span> <span class="n">dtypes_orig</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/generic.py:6461,</span> in <span class="ni">NDFrame.dtypes</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6434</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6435</span><span class="sd"> Return the dtypes in the DataFrame.</span>
-<span class="g g-Whitespace">   </span><span class="mi">6436</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6458</span><span class="sd"> dtype: object</span>
-<span class="g g-Whitespace">   </span><span class="mi">6459</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6460</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">6461</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">object_</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/series.py:586,</span> in <span class="ni">Series.__init__</span><span class="nt">(self, data, index, dtype, name, copy, fastpath)</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">sanitize_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="n">manager</span> <span class="o">=</span> <span class="n">_get_option</span><span class="p">(</span><span class="s2">&quot;mode.data_manager&quot;</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span>     <span class="k">if</span> <span class="n">manager</span> <span class="o">==</span> <span class="s2">&quot;block&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">SingleBlockManager</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">refs</span><span class="o">=</span><span class="n">refs</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_config/config.py:146,</span> in <span class="ni">_get_option</span><span class="nt">(pat, silent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_option</span><span class="p">(</span><span class="n">pat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">silent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">146</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">_get_single_key</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">silent</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="c1"># walk the nested dict</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="n">root</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">_get_root</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_config/config.py:140,</span> in <span class="ni">_get_single_key</span><span class="nt">(pat, silent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="n">_warn_if_deprecated</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">140</span> <span class="n">key</span> <span class="o">=</span> <span class="n">_translate_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">return</span> <span class="n">key</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_config/config.py:681,</span> in <span class="ni">_translate_key</span><span class="nt">(key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">676</span> <span class="k">def</span><span class="w"> </span><span class="nf">_translate_key</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">677</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">678</span><span class="sd">     if key id deprecated and a replacement key defined, will return the</span>
-<span class="g g-Whitespace">    </span><span class="mi">679</span><span class="sd">     replacement key, otherwise returns `key` as - is</span>
-<span class="g g-Whitespace">    </span><span class="mi">680</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">681</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">_get_deprecated_option</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">if</span> <span class="n">d</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span>         <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">rkey</span> <span class="ow">or</span> <span class="n">key</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/_config/config.py:657,</span> in <span class="ni">_get_deprecated_option</span><span class="nt">(key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_deprecated_option</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">650</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">651</span><span class="sd">     Retrieves the metadata for a deprecated option, if `key` is deprecated.</span>
-<span class="g g-Whitespace">    </span><span class="mi">652</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span><span class="sd">     DeprecatedOption (namedtuple) if key is deprecated, None otherwise</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">657</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>         <span class="n">d</span> <span class="o">=</span> <span class="n">_deprecated_options</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span>     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -2069,7 +1968,7 @@ Las variables finalmente incluidas son:</p>
 <p>Al finalizar el desarrollo de todos los modelos, se realizará una comparación de sus resultados con el objetivo de seleccionar el modelo que presente el mejor desempeño.</p>
 </section>
 <section id="modelo-knn-regresion">
-<h2>Modelo KNN - regresion<a class="headerlink" href="#modelo-knn-regresion" title="Link to this heading">#</a></h2>
+<h2>Modelo KNN - Regresión<a class="headerlink" href="#modelo-knn-regresion" title="Link to this heading">#</a></h2>
 <p>Cargamos la librerias y procedemos con el desarrollo del modelo KNN.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2222,10 +2121,11 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
-<p>En el codigo anterior observamos las diferencias entre knn y el resto de modelos. Vemos que en algunas metricas existen mejoras, sin embargo…</p>
+<p>En el código anterior se observan las diferencias en el desempeño entre el modelo KNN y los demás modelos evaluados. Si bien en algunas métricas se evidencian mejoras, se mantiene una tendencia clara: en todos los modelos probados hasta el momento, el uso de una ventana deslizante de 21 días ha producido los mejores resultados.</p>
 </section>
 <section id="modelo-arboles-de-decision-regresion">
-<h2>Modelo Arboles de decision - regresion<a class="headerlink" href="#modelo-arboles-de-decision-regresion" title="Link to this heading">#</a></h2>
+<h2>Modelo: Árboles de Decisión - Regresión<a class="headerlink" href="#modelo-arboles-de-decision-regresion" title="Link to this heading">#</a></h2>
+<p>A continuación, se continuará con el desarrollo del modelo de árbol de decisión para la tarea de regresión. Debido a las limitaciones de tiempo de procesamiento en este Jupyter Book, a partir de este modelo se presentarán directamente los códigos y, en función de los resultados obtenidos, se definirán los mejores hiperparámetros con los cuales se realizará el entrenamiento final de cada modelo.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
@@ -2915,17 +2815,16 @@ Las variables finalmente incluidas son:</p>
 </div>
 <section id="modelo-ann-multi-layer-perceptron-mlp-regresion">
 <h3>Modelo ANN Multi Layer Perceptron (MLP) - regresion<a class="headerlink" href="#modelo-ann-multi-layer-perceptron-mlp-regresion" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
 
 <span class="n">param_grid_MLP</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)],</span>
     <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="s1">&#39;tanh&#39;</span><span class="p">],</span>
     <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;adam&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">],</span>
     <span class="s1">&#39;learning_rate_init&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">],</span>
-    <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">]</span>
+    <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># 3. Ejecutar la validación temporal con SVR</span>
@@ -2943,17 +2842,22 @@ Las variables finalmente incluidas son:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultados_mlp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/neural_network/_multilayer_perceptron.py:698: UserWarning: Training interrupted by user.
-  warnings.warn(&quot;Training interrupted by user.&quot;)
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict8</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+<span class="n">resultados_mlp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;MLP&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="s1">&#39;tanh&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="s1">&#39;hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">50</span><span class="p">,)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.558041</span>
+    <span class="p">}])</span>
+
+<span class="n">modelos_dict8</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;MLP&#39;</span><span class="p">:</span> <span class="n">MLPRegressor</span>
 <span class="p">}</span>
 
@@ -3004,20 +2908,122 @@ Las variables finalmente incluidas son:</p>
   <tbody>
     <tr>
       <th>0</th>
+      <td>LinearRegression</td>
+      <td>21</td>
+      <td>-</td>
+      <td>0.530762</td>
+      <td>0.503996</td>
+      <td>0.709926</td>
+      <td>0.606147</td>
+      <td>32.247794</td>
+      <td>5.748761e-09</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>21</td>
+      <td>{'alpha': 1.0}</td>
+      <td>0.531421</td>
+      <td>0.491149</td>
+      <td>0.700820</td>
+      <td>0.616186</td>
+      <td>32.383334</td>
+      <td>7.534636e-13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lasso</td>
+      <td>21</td>
+      <td>{'alpha': 0.0001}</td>
+      <td>0.533032</td>
+      <td>0.493721</td>
+      <td>0.702653</td>
+      <td>0.614176</td>
+      <td>32.424104</td>
+      <td>9.837321e-13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>knn</td>
+      <td>21</td>
+      <td>{'n_neighbors': 7}</td>
+      <td>0.604018</td>
+      <td>0.609743</td>
+      <td>0.780861</td>
+      <td>0.523509</td>
+      <td>42.895575</td>
+      <td>3.703323e-44</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DecisionTree</td>
+      <td>21</td>
+      <td>{'max_depth': 3, 'min_samples_split': 2}</td>
+      <td>0.567094</td>
+      <td>0.542789</td>
+      <td>0.736742</td>
+      <td>0.575832</td>
+      <td>33.822034</td>
+      <td>7.783506e-08</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RandomForest</td>
+      <td>21</td>
+      <td>{'max_depth': 10, 'n_estimators': 50}</td>
+      <td>0.535614</td>
+      <td>0.492825</td>
+      <td>0.702015</td>
+      <td>0.614876</td>
+      <td>33.539855</td>
+      <td>6.632141e-07</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>XGBoost</td>
+      <td>21</td>
+      <td>{'learning_rate': 0.01, 'max_depth': 5, 'n_est...</td>
+      <td>0.602743</td>
+      <td>0.611995</td>
+      <td>0.782301</td>
+      <td>0.521749</td>
+      <td>44.717257</td>
+      <td>2.262960e-102</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SVM</td>
+      <td>21</td>
+      <td>{'C': 0.1, 'epsilon': 0.1, 'gamma': 1, 'kernel...</td>
+      <td>0.858822</td>
+      <td>1.174568</td>
+      <td>1.083775</td>
+      <td>0.082121</td>
+      <td>67.470127</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>8</th>
       <td>MLP</td>
       <td>21</td>
-      <td>{'activation': 'relu', 'alpha': 0.001, 'hidden...</td>
-      <td>0.53126</td>
-      <td>0.488737</td>
-      <td>0.699097</td>
-      <td>0.618071</td>
-      <td>34.224519</td>
-      <td>1.974536e-07</td>
+      <td>{'activation': 'tanh', 'alpha': 0.01, 'hidden_...</td>
+      <td>0.551587</td>
+      <td>0.502724</td>
+      <td>0.709031</td>
+      <td>0.607140</td>
+      <td>33.088098</td>
+      <td>5.846063e-54</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>deslizante de 21 días. Se comparan métricas clave como MAE, MSE, RMSE, R², MAPE y el p-valor del test de Ljung-Box.</p>
+<p>Observando los valores de RMSE, que es uno de los principales criterios de comparación, los modelos Linear Regression y MLP (Perceptrón Multicapa) obtuvieron los valores más bajos (0.709926 y 0.709031, respectivamente), prácticamente iguales. Además, el modelo Ridge también presenta un RMSE competitivo de 0.700820.</p>
+<p>Respecto al R², que mide la proporción de la varianza explicada por el modelo, el MLP alcanza el valor más alto (0.607140), seguido muy de cerca por la Linear Regression (0.606147) y Ridge (0.616186).</p>
+<p>En términos de MAPE, que indica el error porcentual promedio, Linear Regression y Ridge también muestran buenos resultados, alrededor del 32%.</p>
+<p>El p-valor del test de Ljung-Box es bajo en todos los modelos, indicando que en general existe autocorrelación en los residuos, aunque esto era esperable dado que se trabaja con datos de series de tiempo.</p>
+<p>En conclusion, modelo Ridge se destaca ligeramente sobre los demás, ya que logra el menor MSE y RMSE entre los modelos comparables y el mayor R². Además, mantiene un MAPE muy competitivo. Aunque el MLP también tiene un muy buen desempeño, Ridge ofrece resultados muy sólidos con una estructura más sencilla y menor riesgo de sobreajuste, lo que lo convierte en una opción más robusta y eficiente para este caso.</p>
 </section>
 <section id="modelo-rnn-regresion">
 <h3>Modelo RNN - regresion<a class="headerlink" href="#modelo-rnn-regresion" title="Link to this heading">#</a></h3>
@@ -30731,12 +30737,12 @@ Las variables finalmente incluidas son:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado">Análisis bivariado</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de regresion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de regresion lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion">Modelos de Regresión</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal">Modelo de Regresión lineal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-modelo">Entrenamiento del modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - regresion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - regresion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo Arboles de decision - regresion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ridge-y-lasso-regresion">Modelo Ridge y Lasso - Regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-knn-regresion">Modelo KNN - Regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-arboles-de-decision-regresion">Modelo: Árboles de Decisión - Regresión</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
