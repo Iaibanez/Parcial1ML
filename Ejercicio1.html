@@ -404,17 +404,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm-regresion">Modelo Support Vector Machine (SVM) - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Resultados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - Regresión</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-grafico">Análisis gráfico</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rnn-regresion">Modelo RNN - regresion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lstm-regresion">Modelo LSTM - regresion</a></li>
@@ -1243,7 +1243,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x16abee700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1594e3160&gt;
 </pre></div>
 </div>
 <img alt="_images/d3abd91b3a26760eb3e81cba433f6cbfd52ecbc4de7b5fe72bdb38a2dd834f4a.png" src="_images/d3abd91b3a26760eb3e81cba433f6cbfd52ecbc4de7b5fe72bdb38a2dd834f4a.png" />
@@ -1289,7 +1289,7 @@ presion_min_ant → KS: 0.060524247741483794, p-value: 1.0836254040560572e-279
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b0bb63d0cda73870f4b2d2b8f714da30fea09a1b85dc47e40a2c09e77435a002.png" src="_images/b0bb63d0cda73870f4b2d2b8f714da30fea09a1b85dc47e40a2c09e77435a002.png" />
+<img alt="_images/5c765e495972f4e2f705caec485d38998f4939ee053c4cdc1fb1a1fb6a95b027.png" src="_images/5c765e495972f4e2f705caec485d38998f4939ee053c4cdc1fb1a1fb6a95b027.png" />
 </div>
 </div>
 <p><strong>Relación entre humedad, temperatura y presión</strong></p>
@@ -1740,9 +1740,7 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
 
 <span class="c1"># Grid para Lasso</span>
 <span class="n">param_grid_lasso</span> <span class="o">=</span> <span class="p">{</span>
@@ -1763,123 +1761,59 @@ Las variables finalmente incluidas son:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultados_lasso</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Grid para Lasso</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">param_grid_lasso</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">}</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">resultados_lasso</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">modelo_cls</span><span class="o">=</span><span class="n">Lasso</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;Lasso&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_lasso</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># Mostrar los mejores resultados</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="nb">print</span><span class="p">(</span><span class="n">resultados_lasso</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_lasso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;Lasso&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.0001</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.547084</span>
+    <span class="p">}</span>
+<span class="p">])</span>
 
-<span class="nn">Cell In[24], line 33,</span> in <span class="ni">validacion_temporal_grid</span><span class="nt">(df_train, features, target, modelo_cls, modelo_nombre, param_grid, ventanas_dias, horas_por_dia)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">val_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">modelo_cls</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="p">])</span>
-<span class="ne">---&gt; </span><span class="mi">33</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py:1389,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1382</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1385</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1388</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1389</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py:662,</span> in <span class="ni">Pipeline.fit</span><span class="nt">(self, X, y, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span> <span class="o">!=</span> <span class="s2">&quot;passthrough&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="n">last_step_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_metadata_for_step</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>             <span class="n">step_idx</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span>             <span class="n">step_params</span><span class="o">=</span><span class="n">routed_params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>             <span class="n">all_params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">661</span>         <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">662</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">last_step_params</span><span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span> <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/base.py:1389,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1382</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1385</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1388</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1389</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:1080,</span> in <span class="ni">ElasticNet.fit</span><span class="nt">(self, X, y, sample_weight, check_input)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">this_Xy</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1080</span> <span class="n">_</span><span class="p">,</span> <span class="n">this_coef</span><span class="p">,</span> <span class="n">this_dual_gap</span><span class="p">,</span> <span class="n">this_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1081</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1082</span>     <span class="n">y</span><span class="p">[:,</span> <span class="n">k</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1083</span>     <span class="n">l1_ratio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">l1_ratio</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1084</span>     <span class="n">eps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1085</span>     <span class="n">n_alphas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1086</span>     <span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="n">alpha</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1087</span>     <span class="n">precompute</span><span class="o">=</span><span class="n">precompute</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1088</span>     <span class="n">Xy</span><span class="o">=</span><span class="n">this_Xy</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="n">copy_X</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1090</span>     <span class="n">coef_init</span><span class="o">=</span><span class="n">coef_</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span>     <span class="n">return_n_iter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1093</span>     <span class="n">positive</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">positive</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1094</span>     <span class="n">check_input</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span>     <span class="c1"># from here on **params</span>
-<span class="g g-Whitespace">   </span><span class="mi">1096</span>     <span class="n">tol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1097</span>     <span class="n">X_offset</span><span class="o">=</span><span class="n">X_offset</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span>     <span class="n">X_scale</span><span class="o">=</span><span class="n">X_scale</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span>     <span class="n">max_iter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>     <span class="n">selection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">selection</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1102</span>     <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span> <span class="n">coef_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_coef</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="n">dual_gaps_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_dual_gap</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:189,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">187</span> <span class="n">global_skip_validation</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()[</span><span class="s2">&quot;skip_parameter_validation&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="k">if</span> <span class="n">global_skip_validation</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">189</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="n">func_sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="c1"># Map *args/**kwargs to the function signature</span>
-
-<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:695,</span> in <span class="ni">enet_path</span><span class="nt">(X, y, l1_ratio, eps, n_alphas, alphas, precompute, Xy, copy_X, coef_init, verbose, return_n_iter, positive, check_input, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">681</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">cd_fast</span><span class="o">.</span><span class="n">enet_coordinate_descent_gram</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>         <span class="n">coef_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span>         <span class="n">l1_reg</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>         <span class="n">positive</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span> <span class="k">elif</span> <span class="n">precompute</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">695</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">cd_fast</span><span class="o">.</span><span class="n">enet_coordinate_descent</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span>         <span class="n">coef_</span><span class="p">,</span> <span class="n">l1_reg</span><span class="p">,</span> <span class="n">l2_reg</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">max_iter</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">rng</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span> <span class="n">positive</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">698</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span>         <span class="s2">&quot;Precompute should be one of True, False, &#39;auto&#39; or array-like. Got </span><span class="si">%r</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span>         <span class="o">%</span> <span class="n">precompute</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<span class="n">resultados_lasso</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>modelo</th>
+      <th>params</th>
+      <th>ventana_dias</th>
+      <th>rmse_validacion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lasso</td>
+      <td>{'alpha': 0.0001}</td>
+      <td>21</td>
+      <td>0.547084</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Se presentan los resultados de los modelos Ridge y Lasso. Ambos modelos muestran desempeños muy similares; sin embargo, el modelo Ridge obtuvo un menor valor de RMSE durante la fase de validación, por lo que se considera como el de mejor rendimiento. Aunque ambos modelos comparten un mismo origen en cuanto a su propósito de regularización, difieren en su enfoque: Ridge aplica una penalización basada en la norma L2, que tiende a reducir los coeficientes pero sin llevarlos exactamente a cero, mientras que Lasso utiliza una penalización basada en la norma L1, promoviendo la selección de variables al forzar algunos coeficientes a ser exactamente cero. Esta diferencia en la forma de regularizar puede influir en el comportamiento final del modelo, especialmente en conjuntos de datos con alta multicolinealidad o gran cantidad de variables.</p>
 <p>Para evaluar el modelo de manera más eficiente, se diseñó una función que generaliza el proceso de selección de los mejores hiperparámetros, el entrenamiento final y la prueba del modelo. Además, se integró en esta función el cálculo de métricas presentado anteriormente, lo que permite agilizar considerablemente el desarrollo y la evaluación de los modelos posteriores.</p>
@@ -1935,7 +1869,9 @@ Las variables finalmente incluidas son:</p>
 <h3>Resultados<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos_dict</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+
+<span class="n">modelos_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;Ridge&#39;</span><span class="p">:</span> <span class="n">Ridge</span><span class="p">,</span>
 <span class="p">}</span>
 
@@ -1964,16 +1900,6 @@ Las variables finalmente incluidas son:</p>
     <span class="s1">&#39;Lasso&#39;</span><span class="p">:</span> <span class="n">Lasso</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">resultados_lasso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;Lasso&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.0001</span>
-        <span class="p">},</span>
-        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
-        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.547084</span>
-    <span class="p">}</span>
-<span class="p">])</span>
 <span class="n">evaluar_mejores_modelos_en_test</span><span class="p">(</span>
     <span class="n">resultados_validacion</span><span class="o">=</span><span class="n">resultados_lasso</span><span class="p">,</span>
     <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
@@ -2090,22 +2016,123 @@ Las variables finalmente incluidas son:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   modelo              params  ventana_dias  rmse_validacion
-11    knn  {&#39;n_neighbors&#39;: 7}            21         0.668529
-14    knn  {&#39;n_neighbors&#39;: 9}            21         0.669758
-8     knn  {&#39;n_neighbors&#39;: 5}            21         0.673582
-5     knn  {&#39;n_neighbors&#39;: 4}            21         0.680004
-10    knn  {&#39;n_neighbors&#39;: 7}            14         0.692158
-7     knn  {&#39;n_neighbors&#39;: 5}            14         0.694291
-2     knn  {&#39;n_neighbors&#39;: 3}            21         0.695332
-13    knn  {&#39;n_neighbors&#39;: 9}            14         0.695367
-4     knn  {&#39;n_neighbors&#39;: 4}            14         0.699936
-1     knn  {&#39;n_neighbors&#39;: 3}            14         0.713654
-6     knn  {&#39;n_neighbors&#39;: 5}             7         0.741118
-9     knn  {&#39;n_neighbors&#39;: 7}             7         0.744042
-3     knn  {&#39;n_neighbors&#39;: 4}             7         0.745248
-12    knn  {&#39;n_neighbors&#39;: 9}             7         0.751849
-0     knn  {&#39;n_neighbors&#39;: 3}             7         0.755824
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Param grid</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">param_grid_knn</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">}</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">resultados_knn</span> <span class="o">=</span> <span class="n">validacion_temporal_grid</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">df_train</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">modelo_cls</span><span class="o">=</span><span class="n">KNeighborsRegressor</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">modelo_nombre</span><span class="o">=</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid_knn</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">ventanas_dias</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># Mostrar los mejores resultados</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="nb">print</span><span class="p">(</span><span class="n">resultados_knn</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">))</span>
+
+<span class="nn">Cell In[24], line 34,</span> in <span class="ni">validacion_temporal_grid</span><span class="nt">(df_train, features, target, modelo_cls, modelo_nombre, param_grid, ventanas_dias, horas_por_dia)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">modelo_cls</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">34</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/pipeline.py:787,</span> in <span class="ni">Pipeline.predict</span><span class="nt">(self, X, **params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_routing_enabled</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">transform</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter</span><span class="p">(</span><span class="n">with_final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">787</span>         <span class="n">Xt</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span> <span class="c1"># metadata routing enabled</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/_set_output.py:319,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">319</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">324</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/preprocessing/_data.py:1062,</span> in <span class="ni">StandardScaler.transform</span><span class="nt">(self, X, copy)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span> <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1061</span> <span class="n">copy</span> <span class="o">=</span> <span class="n">copy</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span>
+<span class="ne">-&gt; </span><span class="mi">1062</span> <span class="n">X</span> <span class="o">=</span> <span class="n">validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1063</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1064</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span>     <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">FLOAT_DTYPES</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span>     <span class="n">force_writeable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>     <span class="n">ensure_all_finite</span><span class="o">=</span><span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span> <span class="k">if</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_mean</span><span class="p">:</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py:2944,</span> in <span class="ni">validate_data</span><span class="nt">(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2942</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+<span class="g g-Whitespace">   </span><span class="mi">2943</span> <span class="k">elif</span> <span class="ow">not</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="n">no_val_y</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2944</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2945</span> <span class="k">elif</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">no_val_y</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2946</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/sklearn/utils/validation.py:991,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">988</span> <span class="n">context</span> <span class="o">=</span> <span class="s2">&quot; by </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">estimator_name</span> <span class="k">if</span> <span class="n">estimator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">990</span> <span class="c1"># When all dataframe columns are sparse, convert to a sparse array</span>
+<span class="ne">--&gt; </span><span class="mi">991</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="s2">&quot;sparse&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">array</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">992</span>     <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">ImportError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">993</span>         <span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparseDtype</span>  <span class="c1"># noqa: F811</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/accessor.py:224,</span> in <span class="ni">CachedAccessor.__get__</span><span class="nt">(self, obj, cls)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="c1"># we&#39;re accessing the attribute of the class, i.e., Dataset.geo</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span>
+<span class="ne">--&gt; </span><span class="mi">224</span> <span class="n">accessor_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="c1"># Replace the property with the accessor object. Inspired by:</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span> <span class="c1"># https://www.pydanny.com/cached-property.html</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="c1"># We need to use object.__setattr__ because we overwrite __setattr__ on</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="c1"># NDFrame</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">accessor_obj</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/arrays/sparse/accessor.py:31,</span> in <span class="ni">BaseAccessor.__init__</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">data</span>
+<span class="ne">---&gt; </span><span class="mi">31</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/arrays/sparse/accessor.py:247,</span> in <span class="ni">SparseFrameAccessor._validate</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="k">def</span><span class="w"> </span><span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">247</span>     <span class="n">dtypes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validation_msg</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/generic.py:6460,</span> in <span class="ni">NDFrame.dtypes</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6432</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">   </span><span class="mi">6433</span> <span class="k">def</span><span class="w"> </span><span class="nf">dtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6434</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">6435</span><span class="sd">     Return the dtypes in the DataFrame.</span>
+<span class="g g-Whitespace">   </span><span class="mi">6436</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6458</span><span class="sd">     dtype: object</span>
+<span class="g g-Whitespace">   </span><span class="mi">6459</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">6460</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">6461</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">object_</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/ml_venv/lib/python3.9/site-packages/pandas/core/internals/managers.py:289,</span> in <span class="ni">BaseBlockManager.get_dtypes</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_dtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">object_</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">blk</span><span class="o">.</span><span class="n">dtype</span> <span class="k">for</span> <span class="n">blk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">289</span>     <span class="k">return</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blknos</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -2375,10 +2402,12 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
+<p>El modelo Decision Tree presentó un desempeño aceptable, con un RMSE de 0.736742 y un R² de 0.575832. Aunque sus resultados son competitivos, fueron superados por modelos más simples como Ridge y Lasso en términos de menor error de predicción y mayor capacidad explicativa.</p>
 </section>
 </section>
 <section id="modelo-random-forest-regresion">
-<h2>Modelo Random Forest - regresion<a class="headerlink" href="#modelo-random-forest-regresion" title="Link to this heading">#</a></h2>
+<h2>Modelo Random Forest - Regresión<a class="headerlink" href="#modelo-random-forest-regresion" title="Link to this heading">#</a></h2>
+<p>El modelo con el que continuaremos es de mayor complejidad, lo que implica tiempos de procesamiento más largos. No obstante, su alta capacidad para aprender patrones complejos lo convierte en una opción robusta y prometedora para la tarea planteada.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 
 <span class="c1"># 1. Definir el grid de hiperparámetros</span>
@@ -2541,10 +2570,12 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
+<p>El modelo Random Forest mostró un buen desempeño, alcanzando un RMSE de 0.704387 y un R² de 0.612269, superando a modelos como KNN y Decision Tree. Su capacidad para reducir el error y explicar mejor la variabilidad lo posiciona como uno de los modelos más sólidos hasta este punto.</p>
 </section>
 </section>
 <section id="modelo-xgboost-regresion">
-<h2>Modelo XGBoost - regresion<a class="headerlink" href="#modelo-xgboost-regresion" title="Link to this heading">#</a></h2>
+<h2>Modelo XGBoost - Regresión<a class="headerlink" href="#modelo-xgboost-regresion" title="Link to this heading">#</a></h2>
+<p>Desarrollaremos el modelo XGBoost, una versión optimizada y potenciada de los algoritmos de árboles de decisión tradicionales, caracterizada por su alta eficiencia, capacidad de generalización y excelente desempeño en tareas de regresión y clasificación.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBRegressor</span>
 
@@ -2570,6 +2601,73 @@ Las variables finalmente incluidas son:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultados_xgb</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># 1. Reconstruir el DataFrame basado en los datos que pasaste</span>
+<span class="n">resultados_xgb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.851075</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.856483</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;modelo&#39;</span><span class="p">:</span> <span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+            <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ventana_dias&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="s1">&#39;rmse_validacion&#39;</span><span class="p">:</span> <span class="mf">0.872350</span>
+    <span class="p">}</span>
+<span class="p">])</span>
+
+<span class="c1"># 2. Crear layout para graficar</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Solo un gráfico en este caso</span>
+
+<span class="c1"># 3. Gráfico de líneas (eje x = ventana_dias, eje y = rmse_validacion)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ventana_dias&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;rmse_validacion&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">resultados_xgb</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span>
+<span class="p">)</span>
+
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;XGBoost - RMSE vs Ventana de Días&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ventana (días)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;RMSE Validación&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>  <span class="c1"># Opcional: para que 21,14,7 quede de izquierda a derecha</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5661f46f4c0472cb743350687e8451902df62a390f1ce1e5c36aaa3baaf3b1a6.png" src="_images/5661f46f4c0472cb743350687e8451902df62a390f1ce1e5c36aaa3baaf3b1a6.png" />
+</div>
+</div>
+<p>La gráfica muestra que a medida que disminuye el tamaño de la ventana de días, el RMSE de validación del modelo XGBoost tiende a aumentar. Esto indica que usar una mayor cantidad de días en la ventana de entrenamiento (especialmente 21 días) permite al modelo lograr un mejor desempeño predictivo, reduciendo el error.</p>
 <section id="id5">
 <h3>Resultados<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -2725,10 +2823,12 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
+<p>El modelo XGBoost presentó un desempeño inferior en comparación con otros modelos, con un RMSE de 0.782301 y un R² de 0.521749, además de un MAPE más elevado. Aunque es un modelo potente, en este caso no logró superar a modelos más simples como Ridge o Linear Regression.</p>
 </section>
 </section>
-<section id="modelo-support-vector-machine-svm">
-<h2>Modelo Support Vector Machine (SVM)<a class="headerlink" href="#modelo-support-vector-machine-svm" title="Link to this heading">#</a></h2>
+<section id="modelo-support-vector-machine-svm-regresion">
+<h2>Modelo Support Vector Machine (SVM) - Regresión<a class="headerlink" href="#modelo-support-vector-machine-svm-regresion" title="Link to this heading">#</a></h2>
+<p>e probará el modelo SVM ajustando sus diferentes hiperparámetros, incluyendo el tipo de kernel, que definirá la metodología de clasificación utilizada por el modelo.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVR</span>
 
 <span class="c1"># 1. Definir el grid de hiperparámetros para SVM</span>
@@ -2922,9 +3022,11 @@ Las variables finalmente incluidas son:</p>
 </table>
 </div></div></div>
 </div>
+<p>Se observa que el modelo SVM obtuvo el peor desempeño entre todos los modelos evaluados, presentando un RMSE superior a 1. Esto demuestra que, aunque se trate de un modelo más complejo, su complejidad no garantiza un mejor ajuste ni lo convierte necesariamente en la opción más adecuada para este problema.</p>
 </section>
 <section id="modelo-ann-multi-layer-perceptron-mlp-regresion">
-<h3>Modelo ANN Multi Layer Perceptron (MLP) - regresion<a class="headerlink" href="#modelo-ann-multi-layer-perceptron-mlp-regresion" title="Link to this heading">#</a></h3>
+<h3>Modelo ANN Multi Layer Perceptron (MLP) - Regresión<a class="headerlink" href="#modelo-ann-multi-layer-perceptron-mlp-regresion" title="Link to this heading">#</a></h3>
+<p>A continuación, se desarrollará un modelo de redes neuronales MLP con el objetivo de definir el mejor modelo de regresión.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
 
@@ -10540,17 +10642,17 @@ Las variables finalmente incluidas son:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - regresion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-random-forest-regresion">Modelo Random Forest - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - regresion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-xgboost-regresion">Modelo XGBoost - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm">Modelo Support Vector Machine (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-support-vector-machine-svm-regresion">Modelo Support Vector Machine (SVM) - Regresión</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Resultados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - regresion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-ann-multi-layer-perceptron-mlp-regresion">Modelo ANN Multi Layer Perceptron (MLP) - Regresión</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-grafico">Análisis gráfico</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rnn-regresion">Modelo RNN - regresion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-lstm-regresion">Modelo LSTM - regresion</a></li>
